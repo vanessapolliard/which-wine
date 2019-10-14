@@ -102,3 +102,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# In all directories within the repo, ignore .DS_Store
+**/.DS_Store
