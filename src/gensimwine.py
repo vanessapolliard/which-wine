@@ -65,3 +65,6 @@ if __name__ == '__main__':
     lda_model.save('model1')
 
     pprint(lda_model.print_topics())
+
+    # document vs topic matrix
+    theta = [lda_model.get_document_topics(item) for item in texts]

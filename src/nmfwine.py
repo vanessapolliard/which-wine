@@ -1,12 +1,10 @@
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
-from sklearn.decomposition import LatentDirichletAllocation
+from sklearn.decomposition import NMF
 from sklearn.metrics.pairwise import cosine_distances
 from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from sklearn.feature_extraction import stop_words
-import matplotlib.pyplot as plt
-import seaborn as sns
 import pandas as pd
 import numpy as np
 import time
@@ -32,9 +30,10 @@ def find_top_words(matrix):
 
 def find_similar_wines(wine_title):
     wine_idx = df[df['title'] == wine_title].index[0]
-    dists = cosine_distances(theta, theta)
+    dists = cosine_distances(W, W)
     top_wines = np.argsort(dists[wine_idx,:])[-10:][::1]
-    top_wines = df.title[top_wines]
+    #top_wines = df.title[top_wines]
+    top_wines = df.loc[top_wines][['title','description','variety']]
     return top_wines[1:]
 
 if __name__ == '__main__':
