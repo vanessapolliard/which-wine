@@ -49,6 +49,7 @@ if __name__ == '__main__':
     desc = desc.str.replace('.', ' ')
     print('Data cleaned')
 
+    #stop = stop.append(['ha', 'le', 'u', 'wa','s','t','s','r','ro'])
     countvect = CountVectorizer(stop_words='english', tokenizer=tokenize)
     count_vectorized = countvect.fit_transform(desc)
     words = countvect.get_feature_names()
