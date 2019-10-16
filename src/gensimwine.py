@@ -22,7 +22,7 @@ def lemmatize_stemming(text):
 def preprocess(text):
     result = []
     for token in gensim.utils.simple_preprocess(text):
-        if token not in stop and len(token) > 3:
+        if token not in stop_words and len(token) > 3:
             result.append(lemmatize_stemming(token))
     return result
 
@@ -40,9 +40,9 @@ if __name__ == '__main__':
     print('Data cleaned')
 
     additional_stop = ['wine','flavor','aromas','finish', 'palate', 'note', 'nose', 'drink']
-    stop = list(gensim.parsing.preprocessing.STOPWORDS)
+    stop_words = list(gensim.parsing.preprocessing.STOPWORDS)
     for val in additional_stop:
-        stop.append(val)
+        stop_words.append(val)
 
     processed_docs = desc.map(preprocess)
     print('Data featurized')
