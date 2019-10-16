@@ -43,6 +43,7 @@ if __name__ == '__main__':
     stop_words = list(gensim.parsing.preprocessing.STOPWORDS)
     for val in additional_stop:
         stop_words.append(val)
+    stop_words = frozenset(stop_words)
 
     processed_docs = desc.map(preprocess)
     print('Data featurized')
