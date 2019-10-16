@@ -23,7 +23,7 @@ def preprocess(text):
     result = []
     for token in gensim.utils.simple_preprocess(text):
         stem = lemmatize_stemming(token)
-        if token not in stop_words and len(token) > 3:
+        if stem not in stop_words and len(stem) > 3:
             result.append(stem)
     return result
 
