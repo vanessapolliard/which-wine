@@ -27,6 +27,15 @@ def preprocess(text):
             result.append(stem)
     return result
 
+def create_theta_matrix(theta_array,num_topics):
+    #create new dataframe of shape observations by topics
+    new_df = pd.DataFrame(0, index=range(0,len(theta_array)), columns=range(0,num_topics)
+    for idx, row in enumerate(theta_array):
+        for tuple_val in row:
+            new_df[idx,tuple_val[0]] = tuple_val[1]
+    return new_df
+
+
 if __name__ == '__main__':
     raw_data = '../data/winemag-data-190314.csv'
     wine_title = 'Quinta dos Avidagos 2011 Avidagos Red (Douro)'
@@ -40,7 +49,7 @@ if __name__ == '__main__':
     desc = desc.str.replace('.', ' ')
     print('Data cleaned')
 
-    additional_stop = ['wine','flavor','aromas','finish', 'palate', 'note', 'nose', 'drink', 'fruit']
+    additional_stop = ['wine','flavor','aromas','finish', 'palate', 'note', 'nose', 'drink', 'fruit', 'like']
     stop_words = list(gensim.parsing.preprocessing.STOPWORDS)
     for val in additional_stop:
         stop_words.append(val)
