@@ -76,21 +76,21 @@ if __name__ == '__main__':
     lda_model = gensim.models.LdaMulticore(bow_corpus, num_topics=num_topics, id2word=id2word, passes=2, workers=35)
     stop = time.time()
     print('Model created in ', stop-start)
-    lda_model.save('model1')
+    lda_model.save('finalmodel')
 
     pprint(lda_model.print_topics())
 
     # document vs topic list of lists of tuples
-    # theta = [lda_model.get_document_topics(item) for item in bow_corpus]
-    # print('Theta array created')
+    theta = [lda_model.get_document_topics(item) for item in bow_corpus[:50000]]
+    print('Theta array created')
 
-    # # create theta matrix
-    # #create new dataframe of shape observations by topics
-    # new_df = pd.DataFrame(0, index=range(0,len(theta)), columns=range(0,num_topics))
-    # pool = mp.Pool(mp.cpu_count())
-    # start2 = time.time()
-    # print('Theta matrix creation start time: ', start2)
-    # theta_matrix = pool.starmap(create_theta_matrix2, [(idx, row) for idx, row in enumerate(theta)])
-    # stop2 = time.time()
-    # pool.close()
-    # print('Matrix created in ', stop2-start2, ' seconds')
+    # create theta matrix
+    # create new dataframe of shape observations by topics
+    new_df = pd.DataFrame(0, index=range(0,len(theta)), columns=range(0,num_topics))
+    pool = mp.Pool(mp.cpu_count())
+    start2 = time.time()
+    print('Theta matrix creation start time: ', start2)
+    theta_matrix = pool.starmap(create_theta_matrix2, [(idx, row) for idx, row in enumerate(theta)])
+    stop2 = time.time()
+    pool.close()
+    print('Matrix created in ', stop2-start2, ' seconds')
