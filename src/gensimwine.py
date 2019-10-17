@@ -45,6 +45,7 @@ def create_theta_matrix2(idx,row):
 if __name__ == '__main__':
     raw_data = '../data/winemag-data-190314.csv'
     wine_title = 'Quinta dos Avidagos 2011 Avidagos Red (Douro)'
+    num_topics = 7
 
     df = pd.read_csv(raw_data)
     df.drop(labels='Unnamed: 0',axis=1,inplace=True)
@@ -74,7 +75,7 @@ if __name__ == '__main__':
     bow_corpus = [id2word.doc2bow(text) for text in texts]
 
     start = time.time()
-    lda_model = gensim.models.LdaMulticore(bow_corpus, num_topics=7, id2word=id2word, passes=2, workers=35)
+    lda_model = gensim.models.LdaMulticore(bow_corpus, num_topics=num_topics, id2word=id2word, passes=2, workers=35)
     stop = time.time()
     print('Model created in ', stop-start)
     lda_model.save('model1')
@@ -85,7 +86,7 @@ if __name__ == '__main__':
     theta = [lda_model.get_document_topics(item) for item in bow_corpus]
 
     # create non-sparse theta matrix
-    new_df = pd.DataFrame(0, index=range(0,len(theta_array)), columns=range(0,num_topics))
+    new_df = pd.DataFrame(0, index=range(0,len(theta)), columns=range(0,num_topics))
     pool = mp.Pool(mp.cpu_count())
-    theta_matrix = pool.starmap(create_theta_matrix2, [(idx, row) for idx, row in enumerate(theta_array)])
+    theta_matrix = pool.starmap(create_theta_matrix2, [(idx, row) for idx, row in enumerate(theta)])
     pool.close()
