@@ -54,7 +54,7 @@ if __name__ == '__main__':
     desc = desc.str.replace('.', ' ')
     print('Data cleaned')
 
-    additional_stop = ['wine','flavor','aromas','finish', 'palate', 'note', 'nose', 'drink', 'fruit', 'like', 'offer','hint']
+    additional_stop = ['wine','flavor','aromas','finish', 'palate', 'note', 'nose', 'drink', 'fruit', 'like']
     stop_words = list(gensim.parsing.preprocessing.STOPWORDS)
     for val in additional_stop:
         stop_words.append(val)
