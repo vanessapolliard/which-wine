@@ -14,6 +14,7 @@ from gensim.parsing.preprocessing import STOPWORDS
 import gensim.corpora as corpora
 from gensim.models import CoherenceModel
 from pprint import pprint
+import multiprocessing as mp
 
 
 def lemmatize_stemming(text):
@@ -29,12 +30,17 @@ def preprocess(text):
 
 def create_theta_matrix(theta_array,num_topics):
     #create new dataframe of shape observations by topics
-    new_df = pd.DataFrame(0, index=range(0,len(theta_array)), columns=range(0,num_topics)
+    new_df = pd.DataFrame(0, index=range(0,len(theta_array)), columns=range(0,num_topics))
     for idx, row in enumerate(theta_array):
         for tuple_val in row:
             new_df[idx,tuple_val[0]] = tuple_val[1]
     return new_df
 
+    def create_theta_matrix2(idx,row):
+    #create new dataframe of shape observations by topics
+    for tuple_val in row:
+        new_df[idx,tuple_val[0]] = tuple_val[1]
+    return new_df
 
 if __name__ == '__main__':
     raw_data = '../data/winemag-data-190314.csv'
@@ -68,12 +74,18 @@ if __name__ == '__main__':
     bow_corpus = [id2word.doc2bow(text) for text in texts]
 
     start = time.time()
-    lda_model = gensim.models.LdaMulticore(bow_corpus, num_topics=7, id2word=id2word, passes=2, workers=30)
+    lda_model = gensim.models.LdaMulticore(bow_corpus, num_topics=7, id2word=id2word, passes=2, workers=35)
     stop = time.time()
     print('Model created in ', stop-start)
     lda_model.save('model1')
 
     pprint(lda_model.print_topics())
 
-    # document vs topic matrix
+    # document vs topic list of lists of tuples
     theta = [lda_model.get_document_topics(item) for item in bow_corpus]
+
+    # create non-sparse theta matrix
+    new_df = pd.DataFrame(0, index=range(0,len(theta_array)), columns=range(0,num_topics))
+    pool = mp.Pool(mp.cpu_count())
+    theta_matrix = pool.starmap(create_theta_matrix2, [(idx, row) for idx, row in enumerate(theta_array)])
+    pool.close()
