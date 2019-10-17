@@ -36,7 +36,7 @@ def create_theta_matrix(theta_array,num_topics):
             new_df[idx,tuple_val[0]] = tuple_val[1]
     return new_df
 
-    def create_theta_matrix2(idx,row):
+def create_theta_matrix2(idx,row):
     #create new dataframe of shape observations by topics
     for tuple_val in row:
         new_df[idx,tuple_val[0]] = tuple_val[1]
