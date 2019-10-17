@@ -40,7 +40,7 @@ if __name__ == '__main__':
     desc = desc.str.replace('.', ' ')
     print('Data cleaned')
 
-    additional_stop = ['wine','flavor','aromas','finish', 'palate', 'note', 'nose', 'drink']
+    additional_stop = ['wine','flavor','aromas','finish', 'palate', 'note', 'nose', 'drink', 'fruit']
     stop_words = list(gensim.parsing.preprocessing.STOPWORDS)
     for val in additional_stop:
         stop_words.append(val)
@@ -67,4 +67,4 @@ if __name__ == '__main__':
     pprint(lda_model.print_topics())
 
     # document vs topic matrix
-    theta = [lda_model.get_document_topics(item) for item in texts]
+    theta = [lda_model.get_document_topics(item) for item in bow_corpus]
