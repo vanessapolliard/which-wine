@@ -29,8 +29,6 @@ def preprocess(text):
     return result
 
 def create_theta_matrix(theta_array,num_topics):
-    #create new dataframe of shape observations by topics
-    new_df = pd.DataFrame(0, index=range(0,len(theta_array)), columns=range(0,num_topics))
     for idx, row in enumerate(theta_array):
         for tuple_val in row:
             new_df[idx,tuple_val[0]] = tuple_val[1]
@@ -56,7 +54,7 @@ if __name__ == '__main__':
     desc = desc.str.replace('.', ' ')
     print('Data cleaned')
 
-    additional_stop = ['wine','flavor','aromas','finish', 'palate', 'note', 'nose', 'drink', 'fruit', 'like']
+    additional_stop = ['wine','flavor','aromas','finish', 'palate', 'note', 'nose', 'drink', 'fruit', 'like', 'offer','acidity','hint']
     stop_words = list(gensim.parsing.preprocessing.STOPWORDS)
     for val in additional_stop:
         stop_words.append(val)
@@ -84,9 +82,15 @@ if __name__ == '__main__':
 
     # document vs topic list of lists of tuples
     theta = [lda_model.get_document_topics(item) for item in bow_corpus]
+    print('Theta array created')
 
-    # create non-sparse theta matrix
+    # create theta matrix
+    #create new dataframe of shape observations by topics
     new_df = pd.DataFrame(0, index=range(0,len(theta)), columns=range(0,num_topics))
     pool = mp.Pool(mp.cpu_count())
+    start2 = time.time()
+    print('Theta matrix creation start time: ', start2)
     theta_matrix = pool.starmap(create_theta_matrix2, [(idx, row) for idx, row in enumerate(theta)])
+    stop2 = time.time()
     pool.close()
+    print('Matrix created in ', stop2-start2, ' seconds')
