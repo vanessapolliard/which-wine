@@ -36,7 +36,7 @@ def create_theta_matrix(theta_array, num_topics):
                           columns=range(0, num_topics))
     for idx, row in enumerate(theta_array):
         for tuple_val in row:
-            new_df[idx, tuple_val[0]] = tuple_val[1]
+            new_df.loc[idx, tuple_val[0]] = tuple_val[1]
     return new_df
 
 
@@ -54,6 +54,13 @@ def all_words(phi):
         words.append(id2word[idx])
     return words
 
+def find_similar_wines(wine_title):
+    wine_idx = df[df['title'] == wine_title].index[0]
+    top_wines = np.argsort(dists[wine_idx, :])[-10:][::1]
+    # top_wines = df.title[top_wines]
+    top_wines = df.loc[top_wines][['title', 'description', 'variety']]
+    return top_wines[1:]
+
 
 if __name__ == '__main__':
     raw_data = '../data/winemag-data-190314.csv'
@@ -67,6 +74,7 @@ if __name__ == '__main__':
     cleaning.CreateDataFrame()
     cleaning.CleanDataFrame()
     desc = cleaning.cleansed_data
+    df = cleaning.processed_data
 
     # add to stop words
     stop_words = list(gensim.parsing.preprocessing.STOPWORDS)
@@ -124,3 +132,6 @@ if __name__ == '__main__':
     stop2 = time.time()
     pool.close()
     print('Matrix created in ', stop2-start2, ' seconds')
+
+    dists = cosine_distances(theta_matrix, theta_matrix)
+    find_similar_wines('wine_title')

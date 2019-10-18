@@ -92,5 +92,12 @@ Fresh & Fruity            |  Warm Spice
 **coherence** =  0.35
 
 &nbsp;
+### Recommendations
+|  Variety |  Title | Topic Assignments  |
+|---|---|---|
+|  Tempranillo-Merlot | Tandem 2011 Ars In Vitro Tempranillo-Merlot (Navarra)'  | Refosco, Chardonnay, Turbiana, Red Blend, Rhône-style Red Blend, White Blend, Pinot Bianco, Corvina, Cabernet Sauvignon |
+|  Pinot Noir | Sweet Cheeks 2012 Vintner's Reserve Wild Child Block Pinot Noir (Willamette Valley)  | Pinot Blanc, Nebbiolo, Sauvignon Blanc, Nebbiolo, Muscato, Rosé, Rosé, Sauvignon Blanc, Cabernet Sauvignon  |
+
+&nbsp;
 ## Next Steps
-Unfortunately because of the size of the dataset I needed to run the model on EC2 using gensim, but gensim does not easily output the typical LDA phi and theta matrices as Sklearn does. When attempting to calculate cosine distances of an NMF model I ran into memory issues on EC2. I plan to use a subset of the data or a memory-optimized EC2 to move forward with generating recommendations from wine to wine and potentially based on user preferences. 
+Unfortunately because of the size of the dataset I needed to run the model on EC2 using gensim, but gensim does not easily output the typical LDA phi and theta matrices as Sklearn does. When attempting to calculate cosine distances of an NMF model I ran into memory issues on EC2. I plan to use a subset of the data or a memory-optimized EC2 to move forward with generating recommendations from wine to wine (including price and variety as features) and recommendations based on user preferences. 
