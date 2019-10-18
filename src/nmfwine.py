@@ -1,22 +1,16 @@
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
-from sklearn.decomposition import NMF
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_distances
+from sklearn.feature_extraction import stop_words
 from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
+from sklearn.decomposition import NMF
 from nltk.corpus import stopwords
-from sklearn.feature_extraction import stop_words
 import pandas as pd
 import numpy as np
 import time
 import re
 
 def tokenize(doc):
-    '''
-    INPUT: string
-    OUTPUT: list of strings
-
-    Tokenize and stem/lemmatize the document.
-    '''
     wordnet = WordNetLemmatizer()
     return [wordnet.lemmatize(word) for word in word_tokenize(doc.lower())]
 
@@ -71,4 +65,4 @@ if __name__ == '__main__':
     topic_words = find_top_words(H)
     print(topic_words)
 
-    #find_similar_wines(wine_title)
+    find_similar_wines(wine_title)

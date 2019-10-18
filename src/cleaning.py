@@ -20,4 +20,3 @@ class Cleaning(object):
         desc = desc.str.replace('[^a-zA-Z0-9 \n\.]', ' ')
         desc = desc.str.replace('\d', ' ')
         self.cleansed_data = desc.str.replace('.', ' ')
-

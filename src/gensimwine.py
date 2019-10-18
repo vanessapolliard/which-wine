@@ -1,21 +1,21 @@
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.decomposition import LatentDirichletAllocation
 from sklearn.metrics.pairwise import cosine_distances
+from gensim.parsing.preprocessing import STOPWORDS
 from nltk.stem.wordnet import WordNetLemmatizer
+from gensim.utils import simple_preprocess
+from gensim.models import CoherenceModel
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+from cleaning import Cleaning
+import multiprocessing as mp
+from pprint import pprint
+import gensim.corpora as corpora
 import pandas as pd
 import numpy as np
+import gensim
 import time
 import re
-import gensim
-from gensim.utils import simple_preprocess
-from gensim.parsing.preprocessing import STOPWORDS
-import gensim.corpora as corpora
-from gensim.models import CoherenceModel
-from pprint import pprint
-import multiprocessing as mp
-from cleaning import Cleaning
 
 
 def lemmatize_stemming(text):
@@ -85,7 +85,7 @@ if __name__ == '__main__':
     stop = time.time()
     print('Model created in ', stop-start)
     lda_model.save('finalmodel')
-    #lda_model = gensim.models.LdaModel.load('maybetheone')
+    #lda_model = gensim.models.LdaModel.load('../models/maybetheone')
 
     # show terms in topics
     pprint(lda_model.print_topics())
