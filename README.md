@@ -51,19 +51,19 @@ I trained the model on an EC2 instance using gensim multicore LDA to speed up tr
 
 ### Topics
 
-**Fresh & Fruity** - acidity, fresh, apple, crisp, ripe, blend, tannins, citrus, spice, fruity
+**[0] Fresh & Fruity** - acidity, fresh, apple, crisp, ripe, blend, tannins, citrus, spice, fruity
 
-**Berry Blend** - cherry, blackberry, cabernet, black, blend, spice, tannins, sweet, acidity, merlot
+**[1] Berry Blend** - cherry, blackberry, cabernet, black, blend, spice, tannins, sweet, acidity, merlot
 
-**Tart Citrus** - white, acidity, peach, lemon, fresh, apple, pear, citrus, offer, body
+**[2] Tart Citrus** - white, acidity, peach, lemon, fresh, apple, pear, citrus, offer, body
 
-**Dark & Juicy** - tannins, black, cherry, ripe, rich, acidity, dark, spice, berry, texture
+**[3] Dark & Juicy** - tannins, black, cherry, ripe, rich, acidity, dark, spice, berry, texture
 
-**Dark Berries & Spice** - black, cherry, tannins, acidity, berry, offer, spice, ripe, pepper, fresh
+**[4] Dark Berries & Spice** - black, cherry, tannins, acidity, berry, offer, spice, ripe, pepper, fresh
 
-**Full & Smokey** - ripe, rich, tannins, acidity, structure, black, balance, wood, texture, spice
+**[5] Full & Smokey** - ripe, rich, tannins, acidity, structure, black, balance, wood, texture, spice
 
-**Warm Spice** - berry, tannins, acidity, plum, spice, cherry, vanilla, feel, herbal, good
+**[6] Warm Spice** - berry, tannins, acidity, plum, spice, cherry, vanilla, feel, herbal, good
 
 
 
