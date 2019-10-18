@@ -24,7 +24,7 @@ Median wine prices increase drastically in the high 90's, unsurprisingly.
 <p align="center">
   <img src="https://github.com/vanessapolliard/which-wine/blob/master/images/varieties.png">
 </p>
-I expected a more flat distribution of varieties being reviewed, but I was surprised to find Pinot Noir and Chardonnay with the most reviews. There were over 750 different wine varietals reviewd in the dataset.
+I expected a more flat distribution of varieties being reviewed, but I was surprised to find Pinot Noir and Chardonnay with the most reviews. There were over 750 different wine varietals reviewed in the dataset.
 
 
 <p align="center">
@@ -66,6 +66,7 @@ I trained the model on an EC2 instance using gensim multicore LDA to speed up tr
 **Warm Spice** - berry, tannins, acidity, plum, spice, cherry, vanilla, feel, herbal, good
 
 
+
 ### Example Wines
 |  Variety |  Title | Topic Assignments  |
 |---|---|---|
@@ -74,17 +75,15 @@ I trained the model on an EC2 instance using gensim multicore LDA to speed up tr
 | Pinot Gris  | Rainstorm 2013 Pinot Gris (Willamette Valley)  | (0, 0.0628), (2, 0.8923)  |
 |  Cabernet Sauvignon |  Louis M. Martini 2012 Cabernet Sauvignon (Alexander Valley) | (4, 0.3363), (6, 0.6158)  |
 
-<p align="center">
-  <img src="https://github.com/vanessapolliard/which-wine/blob/master/images/topic0words.png">
-</p>
-
-<p align="center">
-  <img src="https://github.com/vanessapolliard/which-wine/blob/master/images/topic6words.png">
-</p>
+### Topic 0 & Topic 6 Top Words
+Fresh & Fruity            |  Warm Spice
+:-------------------------:|:-------------------------:
+![](https://github.com/vanessapolliard/which-wine/blob/master/images/topic0words.png)  |  ![](https://github.com/vanessapolliard/which-wine/blob/master/images/topic6words.png)
 
 
 ### Model Scores
 **log perplexity** = -7.10
+
 **coherence** =  0.35
 
 
