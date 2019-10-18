@@ -5,14 +5,17 @@ from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from sklearn.decomposition import NMF
 from nltk.corpus import stopwords
+from cleaning import Cleaning
 import pandas as pd
 import numpy as np
 import time
 import re
 
+
 def tokenize(doc):
     wordnet = WordNetLemmatizer()
     return [wordnet.lemmatize(word) for word in word_tokenize(doc.lower())]
+
 
 def find_top_words(matrix):
     words = {}
@@ -22,47 +25,57 @@ def find_top_words(matrix):
         words[idx] = top_words
     return words
 
+
 def find_similar_wines(wine_title):
     wine_idx = df[df['title'] == wine_title].index[0]
     dists = cosine_distances(W, W)
-    top_wines = np.argsort(dists[wine_idx,:])[-10:][::1]
-    #top_wines = df.title[top_wines]
-    top_wines = df.loc[top_wines][['title','description','variety']]
+    top_wines = np.argsort(dists[wine_idx, :])[-10:][::1]
+    # top_wines = df.title[top_wines]
+    top_wines = df.loc[top_wines][['title', 'description', 'variety']]
     return top_wines[1:]
+
 
 if __name__ == '__main__':
     raw_data = '../data/winemag-data-190314.csv'
     wine_title = 'Quinta dos Avidagos 2011 Avidagos Red (Douro)'
+    num_topics = 7
 
-    df = pd.read_csv(raw_data)
-    df.drop(labels='Unnamed: 0',axis=1,inplace=True)
-    desc = df.description
-    desc = desc.str.lower()
-    desc = desc.str.replace('[^a-zA-Z0-9 \n\.]', ' ')
-    desc = desc.str.replace('\d', ' ')
-    desc = desc.str.replace('.', ' ')
-    print('Data cleaned')
+    # Get clean data descriptions
+    cleaning = Cleaning(raw_data)
+    cleaning.CreateDataFrame()
+    cleaning.CleanDataFrame()
+    desc = cleaning.cleansed_data
+    df = cleaning.processed_data
 
+    # add morestop words
     stop = list(stop_words.ENGLISH_STOP_WORDS)
-    additional_stop = ['ha', 'le', 'u', 'wa','s','t','s','r','ro','wine','flavor','aromas','finish', 'palate', 'note', 'nose', 'drink', 'ofcut', 'feeeling']
+    additional_stop = ['ha', 'le', 'u', 'wa', 's', 't', 's', 'r',
+                       'ro', 'wine', 'flavor', 'aromas', 'finish',
+                       'palate', 'note', 'nose', 'drink', 'ofcut',
+                       'feeeling']
     for val in additional_stop:
         stop.append(val)
     stop = frozenset(stop)
-    tf_vect = TfidfVectorizer(stop_words=stop,tokenizer=tokenize)
+
+    # create TF-IDF vector
+    tf_vect = TfidfVectorizer(stop_words=stop, tokenizer=tokenize)
     tf = tf_vect.fit_transform(desc)
     words = tf_vect.get_feature_names()
     tf_feature_names = np.array(words)
     print('Data featurized')
 
+    # create NMF model
     start = time.time()
-    nmf = NMF(n_components = 10)
+    nmf = NMF(n_components=num_topics)
     nmf.fit(tf)
     W = nmf.transform(tf)
     H = nmf.components_
     stop = time.time()
     print('Model created in ', stop-start)
-    
+
+    # find top words in each topic
     topic_words = find_top_words(H)
     print(topic_words)
 
+    # find 10 wines similarly loaded to topics
     find_similar_wines(wine_title)
