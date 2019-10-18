@@ -93,7 +93,7 @@ Fresh & Fruity            |  Warm Spice
 
 &nbsp;
 ### Recommendations
-|  Variety |  Title | Topic Assignments  |
+|  Variety |  Title | Recommended Varieties  |
 |---|---|---|
 |  Tempranillo-Merlot | Tandem 2011 Ars In Vitro Tempranillo-Merlot (Navarra)'  | Refosco, Chardonnay, Turbiana, Red Blend, Rhône-style Red Blend, White Blend, Pinot Bianco, Corvina, Cabernet Sauvignon |
 |  Pinot Noir | Sweet Cheeks 2012 Vintner's Reserve Wild Child Block Pinot Noir (Willamette Valley)  | Pinot Blanc, Nebbiolo, Sauvignon Blanc, Nebbiolo, Muscato, Rosé, Rosé, Sauvignon Blanc, Cabernet Sauvignon  |
