@@ -58,7 +58,7 @@ def find_similar_wines(wine_title):
     wine_idx = df[df['title'] == wine_title].index[0]
     top_wines = np.argsort(dists[wine_idx, :])[-10:][::1]
     # top_wines = df.title[top_wines]
-    top_wines = df.loc[top_wines][['title', 'description', 'variety']]
+    top_wines = df.loc[top_wines][['title', 'variety']]
     return top_wines[1:]
 
 
@@ -122,16 +122,17 @@ if __name__ == '__main__':
 
     # create theta matrix
     # create new dataframe of shape observations by topics
-    new_df = pd.DataFrame(0, index=range(0, len(theta)),
-                          columns=range(0, num_topics))
-    pool = mp.Pool(mp.cpu_count())
-    start2 = time.time()
-    print('Theta matrix creation start time: ', start2)
-    theta_matrix = pool.starmap(create_theta_matrix2, [(idx, row)
-                                for idx, row in enumerate(theta)])
-    stop2 = time.time()
-    pool.close()
-    print('Matrix created in ', stop2-start2, ' seconds')
+    # new_df = pd.DataFrame(0, index=range(0, len(theta)),
+    #                       columns=range(0, num_topics))
+    # pool = mp.Pool(mp.cpu_count())
+    # start2 = time.time()
+    # print('Theta matrix creation start time: ', start2)
+    # theta_matrix = pool.starmap(create_theta_matrix2, [(idx, row)
+    #                             for idx, row in enumerate(theta)])
+    # stop2 = time.time()
+    # pool.close()
+    # print('Matrix created in ', stop2-start2, ' seconds')
 
+    theta_matrix = create_theta_matrix(theta, num_topics)
     dists = cosine_distances(theta_matrix, theta_matrix)
     find_similar_wines('wine_title')

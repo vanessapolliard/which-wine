@@ -93,6 +93,8 @@ Fresh & Fruity            |  Warm Spice
 
 &nbsp;
 ### Recommendations
+The following recommendations were generated using a subset of 10,000 reviews from the dataset.
+
 |  Variety |  Title | Recommended Varieties  |
 |---|---|---|
 |  Tempranillo-Merlot | Tandem 2011 Ars In Vitro Tempranillo-Merlot (Navarra)'  | Aglianico, Mourvèdre, Chardonnay, Pinot Noir, Port, Champagne Blend, Grenache, Portuguese White, Cabernet Sauvignon |
@@ -101,4 +103,4 @@ Fresh & Fruity            |  Warm Spice
 
 &nbsp;
 ## Next Steps
-Unfortunately because of the size of the dataset I needed to run the model on EC2 using gensim, but gensim does not easily output the typical LDA phi and theta matrices as Sklearn does. When attempting to calculate cosine distances of an NMF model I ran into memory issues on EC2. I plan to use a subset of the data or a memory-optimized EC2 to move forward with generating recommendations from wine to wine (including price and variety as features) and recommendations based on user preferences. 
+Unfortunately because of the size of the dataset I needed to run the model on EC2 using gensim, but gensim does not easily output the typical LDA phi and theta matrices as Sklearn does. When attempting to calculate cosine distances of an NMF model I ran into memory issues on EC2. I plan to continue using a subset of the data or a memory-optimized EC2 to move forward with generating recommendations from wine to wine (including price and variety as features) and recommendations based on user preferences. 
