@@ -15,6 +15,7 @@ import gensim.corpora as corpora
 from gensim.models import CoherenceModel
 from pprint import pprint
 import multiprocessing as mp
+from cleaning import Cleaning
 
 
 def lemmatize_stemming(text):
@@ -35,32 +36,37 @@ def create_theta_matrix(theta_array,num_topics):
             new_df[idx,tuple_val[0]] = tuple_val[1]
     return new_df
 
+# duplicate of above function except called using pool multithreading
 def create_theta_matrix2(idx,row):
-    #create new dataframe of shape observations by topics
     for tuple_val in row:
         new_df[idx,tuple_val[0]] = tuple_val[1]
     return new_df
 
+# find all words in the documents
+def all_words(phi):
+    words = []
+    for idx in range(phi.shape[1]):
+        words.append(id2word[idx])
+    return words
+
 if __name__ == '__main__':
     raw_data = '../data/winemag-data-190314.csv'
-    wine_title = 'Quinta dos Avidagos 2011 Avidagos Red (Douro)'
     num_topics = 7
-
-    df = pd.read_csv(raw_data)
-    df.drop(labels='Unnamed: 0',axis=1,inplace=True)
-    desc = df.description
-    desc = desc.str.lower()
-    desc = desc.str.replace('[^a-zA-Z0-9 \n\.]', ' ')
-    desc = desc.str.replace('\d', ' ')
-    desc = desc.str.replace('.', ' ')
-    print('Data cleaned')
-
     additional_stop = ['wine','flavor','aromas','finish', 'palate', 'note', 'nose', 'drink', 'fruit', 'like']
+    
+    # Get clean data descriptions
+    cleaning = Cleaning(raw_data)
+    cleaning.CreateDataFrame()
+    cleaning.CleanDataFrame()
+    desc = cleaning.cleansed_data
+
+    # add to stop words
     stop_words = list(gensim.parsing.preprocessing.STOPWORDS)
     for val in additional_stop:
         stop_words.append(val)
     stop_words = frozenset(stop_words)
 
+    #featurize the data
     processed_docs = desc.map(preprocess)
     print('Data featurized')
 
@@ -70,9 +76,10 @@ if __name__ == '__main__':
     #create corpus
     texts = processed_docs
 
-    #Term Document Frequency
+    # create Term Frequency
     bow_corpus = [id2word.doc2bow(text) for text in texts]
 
+    # run gensim LDA model
     start = time.time()
     lda_model = gensim.models.LdaMulticore(bow_corpus, num_topics=num_topics, id2word=id2word, passes=3, workers=35)
     stop = time.time()
@@ -80,20 +87,26 @@ if __name__ == '__main__':
     lda_model.save('finalmodel')
     #lda_model = gensim.models.LdaModel.load('maybetheone')
 
+    # show terms in topics
     pprint(lda_model.print_topics())
 
-    # document vs topic list of lists of tuples
-    # theta = [lda_model.get_document_topics(item) for item in bow_corpus[:50000]]
-    # print('Theta array created')
+    # get phi matrix for wordcloud
+    phi = lda_model.get_topics()
+    words = all_words(phi)
+    cloud_df = pd.DataFrame(phi,columns=words)
 
-    # # create theta matrix
-    # # create new dataframe of shape observations by topics
-    # new_df = pd.DataFrame(0, index=range(0,len(theta)), columns=range(0,num_topics))
-    # pool = mp.Pool(mp.cpu_count())
-    # start2 = time.time()
-    # print('Theta matrix creation start time: ', start2)
-    # theta_matrix = pool.starmap(create_theta_matrix2, [(idx, row) for idx, row in enumerate(theta)])
-    # stop2 = time.time()
-    # pool.close()
-    # print('Matrix created in ', stop2-start2, ' seconds')
+    # document vs topic list of lists of tuples
+    theta = [lda_model.get_document_topics(item) for item in bow_corpus[:50000]]
+    print('Theta array created')
+
+    # create theta matrix
+    # create new dataframe of shape observations by topics
+    new_df = pd.DataFrame(0, index=range(0,len(theta)), columns=range(0,num_topics))
+    pool = mp.Pool(mp.cpu_count())
+    start2 = time.time()
+    print('Theta matrix creation start time: ', start2)
+    theta_matrix = pool.starmap(create_theta_matrix2, [(idx, row) for idx, row in enumerate(theta)])
+    stop2 = time.time()
+    pool.close()
+    print('Matrix created in ', stop2-start2, ' seconds')
 
