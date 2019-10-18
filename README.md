@@ -1,5 +1,7 @@
 # Which Wine?
-
+<p align="center">
+  <img src="https://github.com/vanessapolliard/which-wine/blob/master/images/winestore.jpg">
+</p>
 Being an avid wine-drinker I always find myself staring at the wall of wine in the liquor store without much direction in which wine to choose. I typically stick to the varieties I know I like, but what if I could find wines that match my tastes based on professional wine taster reviews?
 
 ## Data Processing
