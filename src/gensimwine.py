@@ -29,6 +29,7 @@ def preprocess(text):
     return result
 
 def create_theta_matrix(theta_array,num_topics):
+    new_df = pd.DataFrame(0, index=range(0,len(theta_array)), columns=range(0,num_topics))
     for idx, row in enumerate(theta_array):
         for tuple_val in row:
             new_df[idx,tuple_val[0]] = tuple_val[1]
@@ -77,6 +78,7 @@ if __name__ == '__main__':
     stop = time.time()
     print('Model created in ', stop-start)
     lda_model.save('finalmodel')
+    #lda_model = gensim.models.LdaModel.load('maybetheone')
 
     pprint(lda_model.print_topics())
 
@@ -94,3 +96,4 @@ if __name__ == '__main__':
     # stop2 = time.time()
     # pool.close()
     # print('Matrix created in ', stop2-start2, ' seconds')
+
