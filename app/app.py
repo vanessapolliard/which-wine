@@ -35,5 +35,29 @@ def index():
     data = get_data_placeholder()
     return render_template('index.html', data=data)
 
+# find similar wines
+@app.route('/findsimilarwines')
+def find_similar_wines():
+    data = get_data_placeholder()
+    return render_template('findsimilarwines.html', data=data)
+
+# similar wines results
+@app.route('/similarwines')
+def similar_wines():
+    data = get_data_placeholder()
+    return render_template('similarresults.html', data=data)
+
+# take the wine quiz
+@app.route('/winequiz')
+def wine_quiz():
+    data = get_data_placeholder()
+    return render_template('winequiz.html', data=data)
+
+# quiz results page
+@app.route('/quizresults')
+def results():
+    data = get_data_placeholder()
+    return render_template('quizresults.html', data=data)
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, threaded=True, debug=False) # Make sure to change debug=False for production

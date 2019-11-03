@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Which Wine?</title>
+    <title>Wine Quiz</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
@@ -62,16 +62,15 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>Experts Help You Choose a Wine!</h1>
+        <h1>Take the Wine Quiz!</h1>
         <p class="lead">Which wine will you choose? </p>
       </div>
 
-      <div class="jumbotron">
-        <p class="lead"><b>Wine ID -- Likeability</b></p>
-        {% for d in data %}
-        <p class="lead">{{d[0]}} -- {{"{:,.2f}%".format(d[1] * 100)}}</p>
-        {% endfor %}
-      </div>
+      <div class='buttons'>
+          <form action='/quizresults', method='GET'>
+            <button type="submit" >Submit</button>
+          </form>
+        </div>
 
       <!-- <div>
         <img src="{{url_for('static', filename='ALS-v-MOM.png')}}" class="img-fluid" alt="Responsive image" width=20%>
