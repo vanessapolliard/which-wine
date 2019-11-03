@@ -2,7 +2,6 @@ import os
 import pickle
 
 from flask import Flask, render_template, jsonify, request, redirect, url_for
-import psycopg2
 
 # FILE_DIRECTORY = os.path.split(os.path.realpath(__file__))[0]
 # DATA_DIRECTORY = os.path.join(FILE_DIRECTORY, 'data')
