@@ -1,0 +1,759 @@
+,0
+0,Pinot Noir,red
+1,Chardonnay,white
+2,Cabernet Sauvignon,white
+3,Red Blend,red
+4,Bordeaux-style Red Blend,red
+5,Riesling,white
+6,Sauvignon Blanc,white
+7,Syrah,red
+8,Rosé,rose
+9,Nebbiolo,red
+10,Merlot,red
+11,Sangiovese,red
+12,Zinfandel,red
+13,Malbec,red
+14,Portuguese Red,red
+15,White Blend,white
+16,Sparkling Blend,sparkling
+17,Tempranillo,red
+18,Rhône-style Red Blend,red
+19,Champagne Blend,sparkling
+20,Pinot Gris,white
+21,Cabernet Franc,red
+22,Grüner Veltliner,white
+23,Portuguese White,white
+24,Bordeaux-style White Blend,white
+25,Gamay,red
+26,Pinot Grigio,white
+27,Gewürztraminer,white
+28,Viognier,white
+29,Shiraz,red
+30,Petite Sirah,red
+31,Barbera,red
+32,Grenache,red
+33,Port,red
+34,Sangiovese Grosso,red
+35,Glera,white
+36,Tempranillo Blend,red
+37,Chenin Blanc,white
+38,Carmenère,red
+39,"Corvina, Rondinella, Molinara",red
+40,Albariño,white
+41,Rhône-style White Blend,white
+42,Pinot Blanc,white
+43,Aglianico,red
+44,Nero d'Avola,red
+45,Garnacha,red
+46,Moscato,white
+47,Sauvignon,white
+48,Verdejo,white
+49,Petit Verdot,red
+50,Meritage,red
+51,Melon,white
+52,Primitivo,red
+53,Mourvèdre,red
+54,Garganega,white
+55,Blaufränkisch,red
+56,Torrontés,white
+57,Montepulciano,red
+58,Vermentino,white
+59,Prosecco,sparkling
+60,Zweigelt,red
+61,G-S-M,red
+62,Verdicchio,white
+63,Touriga Nacional,red
+64,Mencía,red
+65,Pinot Nero,red
+66,Turbiana,white
+67,Fiano,white
+68,Roussanne,white
+69,Tannat,red
+70,Tinta de Toro,red
+71,Dolcetto,red
+72,Pinot Bianco,white
+73,Vernaccia,white
+74,Nerello Mascalese,red
+75,Sémillon,white
+76,Monastrell,red
+77,Grenache Blanc,white
+78,Grillo,white
+79,Muscat,white
+80,Pinotage,red
+81,Alvarinho,white
+82,Greco,white
+83,Cabernet Sauvignon-Merlot,red
+84,Friulano,white
+85,Rosato,rose
+86,Falanghina,white
+87,Viura,white
+88,Sagrantino,red
+89,Malbec-Merlot,red
+90,Tinto Fino,red
+91,Cabernet Sauvignon-Syrah,red
+92,Bonarda,red
+93,Sherry,white
+94,Godello,white
+95,Grenache-Syrah,red
+96,St. Laurent,red
+97,Negroamaro,red
+98,Austrian white blend,white
+99,Arinto,white
+100,Cabernet Blend,red
+101,Spätburgunder,red
+102,Arneis,white
+103,Ribolla Gialla,white
+104,Carignan,red
+105,Rosado,rose
+106,Sauvignon Blanc-Semillon,white
+107,Marsanne,white
+108,Lagrein,red
+109,Provence red blend,red
+110,Fumé Blanc,white
+111,Alsace white blend,white
+112,Cortese,red
+113,Petit Manseng,white
+114,Verdelho,white
+115,Syrah-Grenache,red
+116,Portuguese Sparkling,sparkling
+117,Pecorino,white
+118,Malbec-Cabernet Sauvignon,red
+119,Austrian Red Blend,red
+120,Sylvaner,white
+121,Furmint,white
+122,Semillon-Sauvignon Blanc,white
+123,Moscatel,white
+124,Trebbiano,white
+125,Vidal Blanc,white
+126,Gros and Petit Manseng,white
+127,Weissburgunder,white
+128,Agiorgitiko,red
+129,Alicante Bouschet,red
+130,Malvasia,red
+131,Lambrusco,red
+132,Pinot Meunier,red
+133,Tempranillo-Cabernet Sauvignon,red
+134,Silvaner,white
+135,Carricante,white
+136,Müller-Thurgau,white
+137,Graciano,red
+138,Lemberger,red
+139,Cinsault,red
+140,Melon de Bourgogne,white
+141,Merlot-Cabernet Sauvignon,red
+142,Encruzado,white
+143,Frappato,red
+144,Pedro Ximénez,white
+145,Garnacha Blanca,white
+146,Xinomavro,red
+147,Prugnolo Gentile,red
+148,Shiraz-Viognier,rose
+149,Cabernet Sauvignon-Carmenère,red
+150,Gelber Muskateller,white
+151,Assyrtico,white
+152,Claret,red
+153,Moschofilero,white
+154,Traminer,white
+155,Syrah-Cabernet Sauvignon,red
+156,Catarratto,white
+157,Saperavi,red
+158,Shiraz-Cabernet Sauvignon,red
+159,Fernão Pires,white
+160,Muscat Canelli,white
+161,Tempranillo-Garnacha,red
+162,Castelão,red
+163,Provence white blend,white
+164,Loureiro,white
+165,Gros Manseng,white
+166,Scheurebe,white
+167,Carignane,red
+168,Auxerrois,white
+169,Chardonnay-Viognier,white
+170,Aligoté,white
+171,Gamay Noir,red
+172,Inzolia,white
+173,Teroldego,red
+174,Tannat-Cabernet,red
+175,Insolia,white
+176,Zibibbo,white
+177,Chenin Blanc-Chardonnay,white
+178,Welschriesling,white
+179,Baga,red
+180,Rkatsiteli,white
+181,Kerner,white
+182,Cabernet Sauvignon-Shiraz,red
+183,Dornfelder,red
+184,Cannonau,red
+185,Charbono,red
+186,Merlot-Cabernet Franc,red
+187,Bobal,red
+188,Lambrusco di Sorbara,red
+189,Touriga Nacional-Cabernet Sauvignon,red
+190,Petite Verdot,red
+191,Jacquère,white
+192,Marsanne-Roussanne,white
+193,Picolit,white
+194,Macabeo,white
+195,Durella,white
+196,Xarel-lo,white
+197,Tokaji,white
+198,Trincadeira,red
+199,Rotgipfler,white
+200,Coda di Volpe,white
+201,Passerina,white
+202,Lambrusco Grasparossa,red
+203,Colombard,white
+204,Orange Muscat,white
+205,Malvasia Bianca,white
+206,Corvina,red
+207,Picpoul,white
+208,Albana,white
+209,Cabernet Merlot,red
+210,Verdejo-Viura,white
+211,Muskat Ottonel,white
+212,Grechetto,white
+213,Tocai Friulano,white
+214,Tannat-Cabernet Franc,red
+215,Colombard-Sauvignon Blanc,white
+216,Cabernet Franc-Merlot,red
+217,Cabernet Sauvignon-Cabernet Franc,red
+218,Monastrell-Syrah,red
+219,Schiava,red
+220,Savagnin,white
+221,Hondarrabi Zuri,white
+222,Nero di Troia,red
+223,Cabernet Sauvignon-Malbec,red
+224,Piedirosso,red
+225,Palomino,red
+226,Negrette,red
+227,Syrah-Petite Sirah,red
+228,Syrah-Viognier,red
+229,Assyrtiko,white
+230,Touriga Nacional Blend,red
+231,Malbec-Syrah,red
+232,Plavac Mali,red
+233,Gaglioppo,red
+234,Tempranillo Blanco,white
+235,Grauburgunder,white
+236,Chambourcin,white
+237,Syrah-Mourvèdre,red
+238,Seyval Blanc,white
+239,Grenache-Carignan,red
+240,Cabernet Franc-Cabernet Sauvignon,red
+241,Norton,red
+242,Mondeuse,red
+243,Tinto del Pais,red
+244,Pinot Noir-Gamay,red
+245,Antão Vaz,white
+246,Malbec-Tannat,red
+247,Sauvignon Gris,white
+248,Baco Noir,red
+249,Prieto Picudo,red
+250,Moscato Giallo,white
+251,Garnacha-Syrah,red
+252,Cabernet-Syrah,red
+253,Zierfandler,white
+254,Portuguese Rosé,rose
+255,Siria,red
+256,Shiraz-Grenache,red
+257,Syrah-Cabernet,red
+258,Perricone,red
+259,Viura-Chardonnay,white
+260,Bical,white
+261,Roter Veltliner,white
+262,Kalecik Karasi,red
+263,Brachetto,red
+264,Alfrocheiro,red
+265,Chasselas,white
+266,Pinot Auxerrois,white
+267,Viognier-Chardonnay,white
+268,Vidal,white
+269,Raboso,red
+270,White Riesling,white
+271,Cabernet Sauvignon-Tempranillo,red
+272,Pansa Blanca,white
+273,Carignano,red
+274,Malbec-Cabernet Franc,red
+275,Muscat Blanc,white
+276,Chenin Blanc-Viognier,white
+277,Black Muscat,red
+278,Tannat-Merlot,red
+279,Tinta Roriz,red
+280,Cabernet,red
+281,Roussanne-Viognier,white
+282,Grenache Blend,red
+283,Counoise,red
+284,Merlot-Cabernet,red
+285,Muscadelle,white
+286,Grenache-Mourvèdre,red
+287,Mataro,red
+288,Tocai,white
+289,Traminette,red
+290,Uva di Troia,red
+291,Trepat,red
+292,Aragonez,red
+293,Ruché,red
+294,Refosco,red
+295,Tinta Fina,red
+296,Vignoles,white
+297,Okuzgozu,red
+298,Neuburger,white
+299,Sauvignon Blanc-Chardonnay,white
+300,Malagousia,white
+301,Morillon,white
+302,Loin de l'Oeil,white
+303,Pallagrello,white
+304,Tinta del Toro,red
+305,Kekfrankos,red
+306,Johannisberg Riesling,white
+307,Malbec Blend,red
+308,Narince,white
+309,Bual,red
+310,Avesso,red
+311,Aragonês,red
+312,Mavrud,red
+313,Ugni Blanc-Colombard,white
+314,Mauzac,white
+315,Mantonico,white
+316,Posip,white
+317,Carmenère-Syrah,red
+318,Erbaluce,white
+319,Grenache Noir,red
+320,Duras,white
+321,Marquette,red
+322,Manzoni,white
+323,Nerello Cappuccio,red
+324,Garnacha Tintorera,red
+325,Cabernet Sauvignon-Sangiovese,red
+326,Carmenère-Cabernet Sauvignon,red
+327,Carignan-Grenache,red
+328,Jaen,red
+329,Sangiovese-Cabernet Sauvignon,red
+330,Trousseau,red
+331,Grecanico,white
+332,Colombard-Ugni Blanc,white
+333,Verdeca,white
+334,Mtsvane,white
+335,Merlot-Malbec,red
+336,Tempranillo-Shiraz,red
+337,Syrah-Tempranillo,red
+338,Tempranillo-Merlot,red
+339,Trebbiano Spoletino,red
+340,Teran,red
+341,Touriga Franca,red
+342,Malvasia Istriana,white
+343,Mission,red
+344,Susumaniello,red
+345,Nosiola,white
+346,Roter Traminer,rose
+347,Pallagrello Bianco,white
+348,Valdiguié,red
+349,Gewürztraminer-Riesling,white
+350,Greco Bianco,white
+351,Viognier-Roussanne,white
+352,Marselan,red
+353,Alvarinho-Chardonnay,white
+354,Moscatel Roxo,red
+355,Feteasca Neagra,red
+356,Viognier-Marsanne,white
+357,Moscadello,white
+358,Clairette,white
+359,Aleatico,red
+360,Malvasia Nera,red
+361,Zierfandler-Rotgipfler,red
+362,Roussanne-Marsanne,white
+363,Malbec-Bonarda,red
+364,Braucol,red
+365,Chenin Blanc-Sauvignon Blanc,white
+366,Feteascǎ Regalǎ,white
+367,Tokay,white
+368,Pinot-Chardonnay,white
+369,Sousão,red
+370,Nascetta,white
+371,Maturana,red
+372,Alicante,red
+373,Chardonnay-Sauvignon,white
+374,Altesse,white
+375,Syrah-Merlot,red
+376,Chardonnay-Sauvignon Blanc,white
+377,Chardonnay-Semillon,white
+378,Prié Blanc,white
+379,Sämling,white
+380,Blanc du Bois,white
+381,Viosinho,white
+382,Mazuelo,red
+383,Mansois,red
+384,Rieslaner,white
+385,Garnacha Blend,red
+386,Mavrodaphne,red
+387,Verdejo-Sauvignon Blanc,white
+388,Garnacha-Tempranillo,red
+389,Tannat-Syrah,red
+390,Semillon-Chardonnay,white
+391,Syrah-Carignan,red
+392,Carineña,red
+393,Kisi,white
+394,Savatiano,white
+395,Verduzzo,white
+396,Ciliegiolo,red
+397,Weisser Burgunder,white
+398,Malagouzia,white
+399,Tinta Barroca,red
+400,Asprinio,white
+401,Muskateller,white
+402,Cesanese d'Affile,red
+403,Caprettone,red
+404,Chardonnay-Pinot Blanc,white
+405,Cariñena-Garnacha,red
+406,Babić,red
+407,Edelzwicker,white
+408,Airen,white
+409,Cabernet-Shiraz,red
+410,Malbec-Petit Verdot,red
+411,Incrocio Manzoni,white
+412,Macabeo-Chardonnay,white
+413,Magliocco,red
+414,Bombino Bianco,white
+415,Códega do Larinho,white
+416,Boğazkere,red
+417,Cerceal,white
+418,Abouriou,red
+419,Symphony,white
+420,Roviello,white
+421,Rolle,white
+422,Merlot-Tannat,red
+423,Roditis,white
+424,Robola,white
+425,Ugni Blanc,white
+426,Pallagrello Nero,red
+427,Vilana,red
+428,Vinhão,red
+429,Mourvèdre-Syrah,red
+430,Pignoletto,white
+431,Pinot Blanc-Chardonnay,white
+432,Syrah-Cabernet Franc,red
+433,Tinta Negra Mole,red
+434,Trollinger,red
+435,Pugnitello,red
+436,Vranec,red
+437,Romorantin,white
+438,Timorasso,white
+439,Muscat Ottonel,white
+440,Nielluciu,red
+441,Muscat d'Alexandrie,white
+442,Shiraz-Mourvèdre,red
+443,Veltliner,white
+444,Sciaccerellu,red
+445,Sauvignon Blanc-Verdejo,white
+446,Tempranillo-Syrah,red
+447,Muscat Hamburg,white
+448,Sauvignon Blanc-Chenin Blanc,white
+449,Sangiovese-Syrah,red
+450,Grenache-Shiraz,red
+451,Pigato,white
+452,Grignolino,red
+453,Azal,white
+454,Hárslevelü,white
+455,Grolleau,red
+456,Trousseau Gris,white
+457,Nuragus,white
+458,Trebbiano di Lugana,white
+459,Garnacha-Monastrell,red
+460,Pinot Noir-Syrah,red
+461,Rara Neagra,red
+462,Poulsard,red
+463,Tinta Francisca,red
+464,Casavecchia,red
+465,Catalanesca,white
+466,Canaiolo,red
+467,Shiraz-Malbec,red
+468,Chardonnay-Albariño,white
+469,Sercial,red
+470,Cabernet Sauvignon-Merlot-Shiraz,red
+471,Chinuri,white
+472,Sangiovese Cabernet,red
+473,Rosenmuskateller,rose
+474,Elbling,white
+475,Torontel,white
+476,Emir,white
+477,Rivaner,white
+478,Cabernet Franc-Malbec,red
+479,Cabernet Franc-Carmenère,red
+480,Rebula,white
+481,Feteasca,red
+482,Muskat,white
+483,Tinta Miúda,red
+484,Tinta del Pais,red
+485,Bovale,red
+486,Jacquez,red
+487,Marzemino,red
+488,Madeira Blend,red
+489,Monica,red
+490,Lambrusco Salamino,red
+491,Malvasia-Viura,white
+492,Moscatel de Alejandría,white
+493,Argaman,red
+494,Melnik,red
+495,Vitovska,red
+496,Merlot-Syrah,red
+497,Malbec-Cabernet,red
+498,Muscat Blanc à Petits Grains,white
+499,Viognier-Grenache Blanc,white
+500,Verduzzo Friulano ,white
+501,Muscat of Alexandria,white
+502,Rebo,red
+503,Meseguera,red
+504,Marsanne-Viognier,white
+505,Freisa,red
+506,Cabernet Pfeffer,red
+507,Debit,white
+508,Cabernet Moravia,red
+509,Malvar,white
+510,Malbec-Tempranillo,red
+511,Durif,red
+512,Viura-Verdejo,white
+513,Monastrell-Petit Verdot,red
+514,Rabigato,white
+515,Malbec-Carménère,red
+516,Madeleine Angevine,white
+517,Çalkarası,rose
+518,Molinara,red
+519,Muscatel,white
+520,Cabernet Franc-Lemberger,red
+521,Fer Servadou,red
+522,Tinta Amarela,red
+523,Alvarelhão,red
+524,Cabernet Sauvignon Grenache,red
+525,Malvasia Fina,white
+526,Carignan-Syrah,red
+527,Souzao,red
+528,Sirica,red
+529,Zlahtina,white
+530,Cayuga,white
+531,Syrah-Malbec,red
+532,Syrah-Petit Verdot,red
+533,Shiraz-Tempranillo,red
+534,Chancellor,red
+535,Yapincak,red
+536,Chardonnay Weissburgunder,white
+537,Marawi,white
+538,Cabernet-Malbec,red
+539,Shiraz-Cabernet,red
+540,Xynisteri,white
+541,Schwartzriesling,white
+542,Chelois,red
+543,Mandilaria,red
+544,Albillo,white
+545,Saperavi-Merlot,red
+546,Malvasia di Candia,white
+547,Cococciola,white
+548,Sacy,white
+549,White Port,white
+550,Alvarinho-Trajadura,white
+551,Rufete,red
+552,Garnatxa Blanca,white
+553,Touriga,red
+554,Bastardo,red
+555,Petite Arvine,white
+556,Ondenc,red
+557,Moscato Rosa,rose
+558,Listán Negro,red
+559,Garnatxa,red
+560,Prunelard,red
+561,Grenache Gris,white
+562,Black Monukka,red
+563,Ansonica,white
+564,Graševina,white
+565,Apple,white
+566,Vespolina,red
+567,Muscadine,red
+568,Gouveio,white
+569,Picpoul Blanc,white
+570,Gragnano,red
+571,Arinto-Chardonnay,white
+572,Blauer Portugieser,red
+573,Kadarka,red
+574,Nasco,white
+575,Trajadura,white
+576,Treixadura,white
+577,Moscatel Graúdo,white
+578,Piquepoul Blanc,white
+579,País,red
+580,Plyto,white
+581,Baga-Touriga Nacional,red
+582,Papaskarasi,red
+583,Areni,red
+584,Verdosilla,white
+585,Morio Muskat,white
+586,Tămâioasă Românească,red
+587,Tempranillo-Malbec,red
+588,Vidadillo,red
+589,Tamjanika,red
+590,Bacchus,white
+591,Albanello,red
+592,Babosa Negro,red
+593,Zelen,red
+594,Uvalino,red
+595,Tamianka,white
+596,Syrah-Xinomavro,red
+597,Valvin Muscat,white
+598,Camarlet,red
+599,Aidani,red
+600,Vespaiolo,red
+601,Verdil,white
+602,Carcajolu,red
+603,Vermentino Nero,red
+604,Syrah-Grenache-Viognier,red
+605,Syrah-Garnacha,red
+606,Zweigelt-Pinot Noir,red
+607,Assyrtiko-Sauvignon Blanc,white
+608,Syrah-Carmenère,red
+609,Tempranillo-Tannat,red
+610,Xinisteri,white
+611,Cabernet Sauvignon-Petit Verdot,red
+612,Cabernet Sauvignon-Mourvèdre,red
+613,Bombino Nero,rose
+614,Torbato,white
+615,Tokay Pinot Gris,white
+616,Tinto Velasco,red
+617,Tintilia ,red
+618,Viognier-Valdiguié,white
+619,Traminac,white
+620,Tinta Madeira,red
+621,Bobal-Cabernet Sauvignon,red
+622,Vital,white
+623,Cabernet Franc-Gamay,red
+624,Blauburgunder,red
+625,Blauburger,red
+626,Blatina,red
+627,Vranac,red
+628,Cabernet Franc-Petit Verdot,red
+629,Tinta Cao,red
+630,Viognier-Gewürztraminer,white
+631,Tsapournakos,red
+632,Biancu Gentile,white
+633,Biancolella,white
+634,Biancale,white
+635,Cabernet Sauvignon-Barbera,red
+636,Thrapsathiri,white
+637,Barbera-Nebbiolo,red
+638,Tsolikouri,white
+639,Terrantez,red
+640,Teroldego Rotaliano,red
+641,Albarossa,red
+642,Athiri,white
+643,Roscetto,red
+644,Syrah-Bonarda,red
+645,Kotsifali,red
+646,Karasakiz,red
+647,Karalahna,red
+648,Kangoun,white
+649,Juhfark,red
+650,Johannisberg,white
+651,Jampal,red
+652,Irsai Oliver,white
+653,Ojaleshi,red
+654,Olasrizling,white
+655,Gros Plant,white
+656,Orangetraube,white
+657,Groppello,red
+658,Ortega,white
+659,Other,other
+660,Otskhanuri Sapere,red
+661,Paralleda,white
+662,Parraleta,white
+663,Petit Courbu,white
+664,Petit Meslier,white
+665,Petite Syrah,red
+666,Grauer Burgunder,white
+667,Picapoll,white
+668,Pignolo,red
+669,Gelber Traminer,white
+670,Pinot Blanc-Pinot Noir,rose
+671,Kinali Yapincak,white
+672,Kotsifali-Mandilaria,red
+673,Sumoll,red
+674,Kuntra,red
+675,Maturana Blanca,red
+676,Mavrokalavryta,red
+677,Mavrotragano,red
+678,Maria Gomes-Bical,white
+679,Maria Gomes,white
+680,Mavroudi,red
+681,Merlot-Argaman,red
+682,Manseng Noir,red
+683,Malvazija,white
+684,Merlot-Grenache,red
+685,Merlot-Petite Verdot,red
+686,Merlot-Shiraz,red
+687,Merseguera-Sauvignon Blanc,white
+688,Minutolo,white
+689,Misket,white
+690,Monastrell-Cabernet Sauvignon,red
+691,Malagouzia-Chardonnay,white
+692,Morava,white
+693,Moreto,white
+694,Macabeo-Moscatel,white
+695,Loureiro-Arinto,white
+696,Moscato di Noto,white
+697,Moschofilero-Chardonnay,white
+698,Muscadel,white
+699,Lagrein-Dolcetto,red
+700,Pinot Blanc-Viognier,white
+701,Pinot Grigio-Sauvignon Blanc,white
+702,Garnacha-Graciano,red
+703,Garnacha-Cariñena,red
+704,Cserszegi Fűszeres,white
+705,Roussanne-Grenache Blanc,white
+706,Colorino,red
+707,Ryzlink Rýnský,white
+708,Saint Jeannet,white
+709,Sauvignon Blanc-Assyrtiko,white
+710,Sauvignon Blanc-Sauvignon Gris,white
+711,Chenin Blanc-Verdelho,white
+712,Sauvignon Musqué,white
+713,Sauvignon-Sémillon,white
+714,Sauvignonasse,white
+715,Sciaccerelli,red
+716,Chardonnay-Riesling,white
+717,Chardonnay-Pinot Gris,white
+718,Chardonnay-Macabeo,white
+719,Chardonel,white
+720,Shiraz-Marsanne,red
+721,Shiraz-Roussanne,red
+722,Cesanese,red
+723,Cercial,white
+724,Sideritis,white
+725,Centesimino,red
+726,Siegerrebe,white
+727,Silvaner-Traminer,white
+728,St. Vincent,white
+729,Dafni,white
+730,Diamond,white
+731,Doña Blanca,white
+732,Franconia,red
+733,Garnacha-Cabernet,red
+734,Pinot Gris-Gewürztraminer,white
+735,Pinot Noir-Tannat,red
+736,Pinotage-Merlot,red
+737,Gamza,red
+738,Portuguiser,red
+739,Premsal,white
+740,Primitivo-Susumaniello,red
+741,Fumin,red
+742,Früburgunder,red
+743,Frankovka,red
+744,Francisa,red
+745,Roditis-Moschofilero,white
+746,Forcallà,white
+747,Folle Blanche,white
+748,Foglia Tonda,red
+749,Flora,red
+750,Fiano Bianco,white
+751,Ramisco,red
+752,Favorita,white
+753,Riesling-Chardonnay,white
+754,Espadeiro,red
+755,Riesling-Muscat,white
+756,Ekigaïna,red
+757,Žilavka,white

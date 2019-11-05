@@ -9,8 +9,7 @@ class Cleaning(object):
         self.cleansed_data = None
 
     def CreateDataFrame(self):
-        df = pd.read_csv(self.raw_data)
-        df.drop(labels='Unnamed: 0', axis=1, inplace=True)
+        df = pd.read_csv(self.raw_data, index_col=0)
         self.processed_data = df.description
 
     def CleanDataFrame(self):
