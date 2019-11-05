@@ -133,10 +133,10 @@ if __name__ == '__main__':
     df_sub2 = df_full[df_full['vintage'] > year_cutoff][['category','price']]
     theta_matrix['category'] = df_sub2['category']
     theta_matrix['price'] = df_sub2['price']
+    theta_matrix.dropna(inplace=True)
     scaler = MinMaxScaler()
     theta_matrix['price'] = scaler.fit_transform(theta_matrix[['price']])
     theta_matrix = pd.get_dummies(theta_matrix, prefix=['category'], columns=['category'])
-    theta_matrix.dropna(inplace=True)
     # need to test out dummies and normalized price and see if i need to scale them at all
     # need to log what rows are dropped for NA vals in the lookup/search clean DF
 
