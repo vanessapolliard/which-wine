@@ -114,35 +114,36 @@ if __name__ == '__main__':
     # limit theta matrix based on price
     df_full = pd.read_csv(raw_data,index_col=0)
     df_sub = df_full['vintage']
-    bow_corpus_df = pd.DataFrame(bow_corpus)
-    bow_corp_subset = bow_corpus_df[df_full['vintage'] > year_cutoff]
-    bow_corpus2 = list(bow_corp_subset)
+    good_idx = df_full['vintage'] > year_cutoff
+    bow_corpus = [bow_corpus[idx] for idx, i in enumerate(good_idx) if i == True]
 
-    # # document vs topic list of lists of tuples
-    # theta = [lda_model.get_document_topics(item)
-    #          for item in bow_corpus[:50000]] # limit to 50000 data points
-    # print('Theta array created')
+    # document vs topic list of lists of tuples
+    theta = [lda_model.get_document_topics(item)
+             for item in bow_corpus]
+             # for item in bow_corpus[:50000]] # limit to 50000 data points
+    print('Theta array created')
 
-    # # create theta matrix
-    # start2 = time.time()
-    # theta_matrix = create_theta_matrix(theta, num_topics)
-    # print('Matrix created in ', time.time()-start2, ' seconds')
+    # create theta matrix
+    start2 = time.time()
+    theta_matrix = create_theta_matrix(theta, num_topics)
+    print('Matrix created in ', time.time()-start2, ' seconds')
 
-    # # TODO
-    # # add price, varietal, category to matrix
-    # df_sub2 = df_full[df_full['vintage'] > year_cutoff][['category','price']]
-    # theta_matrix['category'] = df_sub2['category']
-    # theta_matrix['price'] = df_sub2['price']
-    # scaler = MinMaxScaler()
-    # theta_matrix['price'] = scaler.fit_transform(theta_matrix[['price']])
-    # theta_matrix = pd.get_dummies(theta_matrix, prefix=['category'], columns=['category'])
-    # theta_matrix.dropna(inplace=True)
-    # # need to test out dummies and normalized price and see if i need to scale them at all
+    # TODO
+    # add price, varietal, category to matrix
+    df_sub2 = df_full[df_full['vintage'] > year_cutoff][['category','price']]
+    theta_matrix['category'] = df_sub2['category']
+    theta_matrix['price'] = df_sub2['price']
+    scaler = MinMaxScaler()
+    theta_matrix['price'] = scaler.fit_transform(theta_matrix[['price']])
+    theta_matrix = pd.get_dummies(theta_matrix, prefix=['category'], columns=['category'])
+    theta_matrix.dropna(inplace=True)
+    # need to test out dummies and normalized price and see if i need to scale them at all
+    # need to log what rows are dropped for NA vals in the lookup/search clean DF
 
 
+    # find dists once then save matrix
+    start3 = time.time()
+    dists = cosine_distances(theta_matrix, theta_matrix)
+    print('Distances created in ', time.time()-start3, ' seconds')
 
-    # # find dists once then save matrix
-    # start3 = time.time()
-    # #dists = cosine_distances(theta_matrix, theta_matrix)
-    # print('Distances created in ', time.time()-start3, ' seconds')
-    # #find_similar_wines('wine_title')
+    #find_similar_wines('wine_title')
