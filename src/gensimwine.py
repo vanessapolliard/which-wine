@@ -150,10 +150,10 @@ if __name__ == '__main__':
 
     # find dists
     start3 = time.time()
-    # dists = cosine_distances(theta_matrix, theta_matrix)
+    dists = cosine_distances(theta_matrix, theta_matrix)
     print('Distances created in ', time.time()-start3, ' seconds')
 
-    sims = cosine_similarity(theta_matrix, theta_matrix, dense_output=False)
+    # sims = cosine_similarity(theta_matrix, theta_matrix, dense_output=False)
 
     wine_title = "Sweet Cheeks 2012 Vintner's Reserve Wild Child Block Pinot Noir (Willamette Valley)"
     # find_similar_wines(wine_title, dists, df_lookup)
