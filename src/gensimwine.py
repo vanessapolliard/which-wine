@@ -48,10 +48,10 @@ def all_words(phi):
         words.append(id2word[idx])
     return words
 
+
 def find_similar_wines(wine_title, dists, df):
     wine_idx = df[df['title'] == wine_title].index[0]
-    top_wines = np.argsort(dists[wine_idx, :])[-10:] #[::1] I think this removes the same wine but testing
-    # top_wines = df.title[top_wines]
+    top_wines = np.argsort(dists[wine_idx, :])[-10:][::1] # I think this removes the same wine
     top_wines = df.loc[top_wines][['title', 'variety', 'category', 'price']]
     return top_wines
 
@@ -134,7 +134,7 @@ if __name__ == '__main__':
     df_lookup.reset_index(inplace=True)
 
     # add price & category to wine vectors
-    theta_matrix['category'] = df_lookup['category']
+    theta_matrix['category'] = df_lookup['category']*3 # weighting category higher
     theta_matrix['price'] = df_lookup['price']
     theta_matrix.dropna(axis = 0, subset = ['price'],inplace=True) 
     scaler = MinMaxScaler()
@@ -149,4 +149,5 @@ if __name__ == '__main__':
     print('Distances created in ', time.time()-start3, ' seconds')
 
     wine_title = "Sweet Cheeks 2012 Vintner's Reserve Wild Child Block Pinot Noir (Willamette Valley)"
-    find_similar_wines(wine_title, dists, df_lookup)
+    # find_similar_wines(wine_title, dists, df_lookup)
+    # df_lookup[df_lookup['title'] == wine_title]
