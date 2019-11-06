@@ -64,7 +64,7 @@ def save_similarities(dist_matrix):
 
 
 if __name__ == '__main__':
-    raw_data = '../data/winemag_data_inclcategory.csv'
+    raw_data = '../data/use/winemag_data_inclcategory.csv'
     year_cutoff = 2009.0
     num_topics = 7
     price_weight = 0.1
