@@ -57,8 +57,7 @@ def find_similar_wines(wine_title, dists, df):
 
 
 if __name__ == '__main__':
-    # raw_data = '../data/winemag-data-190314.csv'
-    raw_data = '../data/winemag_data_inclcategory.csv' # includes category - red, white, etc
+    raw_data = '../data/winemag_data_inclcategory.csv'
     year_cutoff = 2009.0
     num_topics = 7
     price_weight = 0.1
@@ -66,6 +65,7 @@ if __name__ == '__main__':
     additional_stop = ['wine', 'flavor', 'aromas', 'finish',
                        'palate', 'note', 'nose', 'drink',
                        'fruit', 'like']
+    wine_title = "Sweet Cheeks 2012 Vintner's Reserve Wild Child Block Pinot Noir (Willamette Valley)"
 
     # Get clean data descriptions
     cleaning = Cleaning(raw_data)
@@ -102,6 +102,8 @@ if __name__ == '__main__':
     #                                        workers=35)
     # print('Model created in ', time.time()-start)
     # lda_model.save('finalmodel')
+
+    # load saved model
     lda_model = gensim.models.LdaModel.load('../models/finalmodel')
 
     # show terms in topics
@@ -112,10 +114,8 @@ if __name__ == '__main__':
     # words = all_words(phi)
     # cloud_df = pd.DataFrame(phi, columns=words)
 
-    # TODO
     # limit theta matrix based on price
     df_full = pd.read_csv(raw_data,index_col=0)
-    df_sub = df_full['vintage']
     good_idx = df_full['vintage'] > year_cutoff
     bow_corpus = [bow_corpus[idx] for idx, i in enumerate(good_idx) if i == True]
 
@@ -146,12 +146,9 @@ if __name__ == '__main__':
     theta_matrix['price'] = theta_matrix['price']*price_weight
     theta_matrix[theta_matrix.columns[-4:]] = theta_matrix[theta_matrix.columns[-4:]]*category_weight
 
-
     # find dists
     start3 = time.time()
     dists = cosine_distances(theta_matrix, theta_matrix)
     print('Distances created in ', time.time()-start3, ' seconds')
 
-    wine_title = "Sweet Cheeks 2012 Vintner's Reserve Wild Child Block Pinot Noir (Willamette Valley)"
     # find_similar_wines(wine_title, dists, df_lookup)
-    # df_lookup[df_lookup['title'] == wine_title]
