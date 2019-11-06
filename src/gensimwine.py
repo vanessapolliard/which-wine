@@ -59,7 +59,7 @@ def find_similar_wines(wine_title, dists):
 if __name__ == '__main__':
     # raw_data = '../data/winemag-data-190314.csv'
     raw_data = '../data/winemag_data_inclcategory.csv' # includes category - red, white, etc
-    year_cutoff = 2008.0
+    year_cutoff = 2009.0
     num_topics = 7
     additional_stop = ['wine', 'flavor', 'aromas', 'finish',
                        'palate', 'note', 'nose', 'drink',
