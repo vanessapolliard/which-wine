@@ -20,14 +20,15 @@ def save_similarities(conn, cur, dist_matrix):
     for idx, wine_dists in enumerate(dist_matrix):
         wine_id = idx
         similar_wines = np.argsort(wine_dists)[1:50]
-        insert_into_db(conn, cur, wine_id, list(similar_wines))
+        similar_wines = similar_wines.tolist()
+        insert_into_db(conn, cur, wine_id, similar_wines)
 
 def close_connection(conn):
     conn.close()
 
 
 if __name__ == '__main__':
-    # connect()
+    # conn, cur = connect()
     # save_similarities(conn, cur, dists)
     # close_connection()
     pass
