@@ -51,7 +51,7 @@ def all_words(phi):
 
 def find_similar_wines(wine_title, dists, df):
     wine_idx = df[df['title'] == wine_title].index[0]
-    top_wines = np.argsort(dists[wine_idx, :])[-10:][::1] # I think this removes the same wine
+    top_wines = np.argsort(dists[wine_idx, :])[-10:]
     top_wines = df.loc[top_wines][['title', 'variety', 'category', 'price']]
     return top_wines
 
@@ -134,13 +134,16 @@ if __name__ == '__main__':
     df_lookup.reset_index(inplace=True)
 
     # add price & category to wine vectors
-    theta_matrix['category'] = df_lookup['category']*3 # weighting category higher
+    theta_matrix['category'] = df_lookup['category']
     theta_matrix['price'] = df_lookup['price']
     theta_matrix.dropna(axis = 0, subset = ['price'],inplace=True) 
     scaler = MinMaxScaler()
     theta_matrix['price'] = scaler.fit_transform(theta_matrix[['price']])
     theta_matrix = pd.get_dummies(theta_matrix, prefix=['category'], columns=['category'])
-    # need to test out dummies and normalized price and see if i need to scale them at all
+    # weighting category / price higher
+    theta_matrix['price'] = theta_matrix['price']*2
+    theta_matrix[theta_matrix.columns[-4:]] = theta_matrix[theta_matrix.columns[-4:]]*2
+
 
 
     # find dists
