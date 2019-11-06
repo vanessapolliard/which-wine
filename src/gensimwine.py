@@ -61,6 +61,8 @@ if __name__ == '__main__':
     raw_data = '../data/winemag_data_inclcategory.csv' # includes category - red, white, etc
     year_cutoff = 2009.0
     num_topics = 7
+    price_weight = 0.1
+    category_weight = 0.5
     additional_stop = ['wine', 'flavor', 'aromas', 'finish',
                        'palate', 'note', 'nose', 'drink',
                        'fruit', 'like']
@@ -140,9 +142,9 @@ if __name__ == '__main__':
     scaler = MinMaxScaler()
     theta_matrix['price'] = scaler.fit_transform(theta_matrix[['price']])
     theta_matrix = pd.get_dummies(theta_matrix, prefix=['category'], columns=['category'])
-    # weighting category / price higher
-    theta_matrix['price'] = theta_matrix['price']*1
-    theta_matrix[theta_matrix.columns[-4:]] = theta_matrix[theta_matrix.columns[-4:]]*1
+    # weighting category / price lower
+    theta_matrix['price'] = theta_matrix['price']*price_weight
+    theta_matrix[theta_matrix.columns[-4:]] = theta_matrix[theta_matrix.columns[-4:]]*category_weight
 
 
 
