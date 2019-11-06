@@ -11,10 +11,16 @@ def connect():
 
 def insert_into_db(conn, cur, wine_id, similar_wines):
     insert_vals = [wine_id, similar_wines]
-    insert_query = "INSERT INTO similarwines VALUES \
+    try:
+        insert_query = "INSERT INTO similarwines VALUES \
                     (%s, %s)"
-    cur.execute(insert_query, tuple(insert_vals))
-    conn.commit()
+        cur.execute(insert_query, tuple(insert_vals))
+        conn.commit()
+    except Exception as e:
+        print(e)
+        print(insert_query % tuple(insert_vals))
+
+        
 
 def save_similarities(conn, cur, dist_matrix):
     for idx, wine_dists in enumerate(dist_matrix):
