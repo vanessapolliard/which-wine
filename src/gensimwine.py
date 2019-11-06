@@ -48,7 +48,7 @@ def all_words(phi):
         words.append(id2word[idx])
     return words
 
-def find_similar_wines(wine_title):
+def find_similar_wines(wine_title, dists):
     wine_idx = df[df['title'] == wine_title].index[0]
     top_wines = np.argsort(dists[wine_idx, :])[-10:][::1]
     # top_wines = df.title[top_wines]
@@ -128,20 +128,21 @@ if __name__ == '__main__':
     theta_matrix = create_theta_matrix(theta, num_topics)
     print('Matrix created in ', time.time()-start2, ' seconds')
 
-    # TODO
-    # add price, varietal, category to matrix
-    df_sub2 = df_full[df_full['vintage'] > year_cutoff][['category','price']]
-    theta_matrix['category'] = df_sub2['category']
-    theta_matrix['price'] = df_sub2['price']
-    theta_matrix.dropna(inplace=True)
+    # create lookup table
+    df_lookup = df_full[df_full['vintage'] > year_cutoff]
+    df_lookup.dropna(axis = 0, subset = ['price','category'],inplace=True) 
+    df_lookup.reset_index(inplace=True)
+
+    # add price & category to wine vectors
+    theta_matrix['category'] = df_lookup['category']
+    theta_matrix['price'] = df_lookup['price']
     scaler = MinMaxScaler()
     theta_matrix['price'] = scaler.fit_transform(theta_matrix[['price']])
     theta_matrix = pd.get_dummies(theta_matrix, prefix=['category'], columns=['category'])
     # need to test out dummies and normalized price and see if i need to scale them at all
-    # need to log what rows are dropped for NA vals in the lookup/search clean DF
 
 
-    # find dists once then save matrix
+    # find dists
     start3 = time.time()
     dists = cosine_distances(theta_matrix, theta_matrix)
     print('Distances created in ', time.time()-start3, ' seconds')
