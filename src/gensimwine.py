@@ -57,7 +57,7 @@ def find_similar_wines(wine_title, dists, df):
 
 def save_similarities(dist_matrix):
     sim_lookup = {}
-    for idx, wine_dists in enumerate(theta_matrix):
+    for idx, wine_dists in enumerate(dist_matrix):
         sim_lookup[idx] = np.argsort(wine_dists)[:50]
     return sim_lookup
 
