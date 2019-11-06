@@ -5,7 +5,7 @@ import psycopg2
 def connect():
     conn = psycopg2.connect(database="whichwine",
                         user="postgres",
-                        host="18.219.179.32", port="5435")
+                        host="18.219.179.32", port="5432")
     cur = conn.cursor()
 
 def insert_into_db(wine_id, similar_wines):
