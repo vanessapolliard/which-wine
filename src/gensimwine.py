@@ -50,7 +50,7 @@ def all_words(phi):
 
 def find_similar_wines(wine_title, dists, df):
     wine_idx = df[df['title'] == wine_title].index[0]
-    top_wines = np.argsort(dists[wine_idx, :])[-10:][::1]
+    top_wines = np.argsort(dists[wine_idx, :])[-10:] #[::1] I think this removes the same wine but testing
     # top_wines = df.title[top_wines]
     top_wines = df.loc[top_wines][['title', 'variety', 'category', 'price']]
     return top_wines
@@ -148,4 +148,5 @@ if __name__ == '__main__':
     dists = cosine_distances(theta_matrix, theta_matrix)
     print('Distances created in ', time.time()-start3, ' seconds')
 
-    #find_similar_wines('wine_title')
+    wine_title = "Sweet Cheeks 2012 Vintner's Reserve Wild Child Block Pinot Noir (Willamette Valley)"
+    find_similar_wines(wine_title, dists, df_lookup)
