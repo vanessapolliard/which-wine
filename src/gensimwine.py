@@ -55,6 +55,13 @@ def find_similar_wines(wine_title, dists, df):
     top_wines = df.loc[top_wines][['title', 'variety', 'category', 'price']]
     return top_wines
 
+def save_similarities(dist_matrix):
+    sim_lookup = {}
+    for idx, wine_dists in enumerate(theta_matrix):
+        sim_lookup[idx] = np.argsort(wine_dists)[:50]
+    return sim_lookup
+
+
 
 if __name__ == '__main__':
     raw_data = '../data/winemag_data_inclcategory.csv'
@@ -152,3 +159,4 @@ if __name__ == '__main__':
     print('Distances created in ', time.time()-start3, ' seconds')
 
     # find_similar_wines(wine_title, dists, df_lookup)
+
