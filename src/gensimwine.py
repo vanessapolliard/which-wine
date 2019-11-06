@@ -136,6 +136,7 @@ if __name__ == '__main__':
     # add price & category to wine vectors
     theta_matrix['category'] = df_lookup['category']
     theta_matrix['price'] = df_lookup['price']
+    theta_matrix.dropna(axis = 0, subset = ['price'],inplace=True) 
     scaler = MinMaxScaler()
     theta_matrix['price'] = scaler.fit_transform(theta_matrix[['price']])
     theta_matrix = pd.get_dummies(theta_matrix, prefix=['category'], columns=['category'])
