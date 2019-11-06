@@ -24,3 +24,4 @@ def save_similarities(dist_matrix):
 if __name__ == '__main__':
     # save_similarities(dists)
     # conn.close()
+    pass
