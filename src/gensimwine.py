@@ -51,7 +51,7 @@ def all_words(phi):
 
 def find_similar_wines(wine_title, dists, df):
     wine_idx = df[df['title'] == wine_title].index[0]
-    top_wines = np.argsort(dists[wine_idx, :])[-10:]
+    top_wines = np.argsort(dists[wine_idx, :])[:10] #taking first 10 because this is cosine distance, not similarity
     top_wines = df.loc[top_wines][['title', 'variety', 'category', 'price']]
     return top_wines
 
@@ -141,8 +141,8 @@ if __name__ == '__main__':
     theta_matrix['price'] = scaler.fit_transform(theta_matrix[['price']])
     theta_matrix = pd.get_dummies(theta_matrix, prefix=['category'], columns=['category'])
     # weighting category / price higher
-    theta_matrix['price'] = theta_matrix['price']*2
-    theta_matrix[theta_matrix.columns[-4:]] = theta_matrix[theta_matrix.columns[-4:]]*2
+    theta_matrix['price'] = theta_matrix['price']*1
+    theta_matrix[theta_matrix.columns[-4:]] = theta_matrix[theta_matrix.columns[-4:]]*1
 
 
 
