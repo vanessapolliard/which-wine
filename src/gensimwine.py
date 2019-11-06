@@ -55,17 +55,18 @@ def find_similar_wines(wine_title, dists, df):
     top_wines = df.loc[top_wines][['title', 'variety', 'category', 'price']]
     return top_wines
 
-def save_similarities(dist_matrix):
-    sim_lookup = {}
-    for idx, wine_dists in enumerate(dist_matrix):
-        sim_lookup[idx] = np.argsort(wine_dists)[:50]
-    return sim_lookup
-
+# def save_similarities(dist_matrix):
+#     sim_lookup = {}
+#     for idx, wine_dists in enumerate(dist_matrix):
+#         sim_lookup[idx] = np.argsort(wine_dists)[1:50]
+#         # write to postgres DB directly instead of save / import
+#         # maybe not write directly because will need to connect EC2 instances
+#     return sim_lookup
 
 
 if __name__ == '__main__':
     raw_data = '../data/use/winemag_data_inclcategory.csv'
-    year_cutoff = 2009.0
+    year_cutoff = 2011.0
     num_topics = 7
     price_weight = 0.1
     category_weight = 0.5
@@ -159,4 +160,3 @@ if __name__ == '__main__':
     print('Distances created in ', time.time()-start3, ' seconds')
 
     # find_similar_wines(wine_title, dists, df_lookup)
-
