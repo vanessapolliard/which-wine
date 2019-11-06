@@ -48,12 +48,12 @@ def all_words(phi):
         words.append(id2word[idx])
     return words
 
-def find_similar_wines(wine_title, dists):
+def find_similar_wines(wine_title, dists, df):
     wine_idx = df[df['title'] == wine_title].index[0]
     top_wines = np.argsort(dists[wine_idx, :])[-10:][::1]
     # top_wines = df.title[top_wines]
-    top_wines = df.loc[top_wines][['title', 'variety']]
-    return top_wines[1:]
+    top_wines = df.loc[top_wines][['title', 'variety', 'category', 'price']]
+    return top_wines
 
 
 if __name__ == '__main__':
