@@ -30,26 +30,12 @@ def save_similarities(conn, cur, dist_matrix):
         insert_vals = [wine_id, similar_wines]
         insert_into_db(conn, cur, insert_vals)
 
-
-def save_theta(conn, cur, theta_matrix):
-    for idx, wine in enumerate(theta_matrix):
-        insert_vals = []
-        insert_vals.append(idx)
-
-        insert_query = "INSERT INTO topicloadings VALUES \
-                    (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        cur.execute(insert_query, tuple(insert_vals))
-        conn.commit()
-
-
-
 def close_connection(conn):
     conn.close()
 
-def alchemy_insert(df):
-    engine = create_engine('postgresql+psycopg2://postgres:@18.219.179.32/whichwine')
-    df.to_sql('topicloadings', engine)
-
+def alchemy_insert(df, table_name): 
+    engine = create_engine('postgresql+psycopg2://postgres:@18.219.179.32/whichwine') 
+    df.to_sql(table_name, engine, if_exists = 'append', index = False) # need to drop table if reloading
 
 
 if __name__ == '__main__':
@@ -69,10 +55,22 @@ if __name__ == '__main__':
     #           topic4 numeric,
     #           topic5 numeric,
     #           topic6 numeric,
-    #           topic7 numeric,
     #           price numeric,
     #           red numeric,
     #           rose numeric,
     #           sparkling numeric,
     #           white numeric
+    #           );
+    # CREATE TABLE winemetadata (
+    #           wine_id integer PRIMARY KEY, 
+    #           country TEXT,
+    #           description TEXT,
+    #           points numeric,
+    #           price numeric,
+    #           province TEXT,
+    #           title TEXT,
+    #           variety TEXT,
+    #           winery TEXT,
+    #           vintage numeric,
+    #           category TEXT
     #           );

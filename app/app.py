@@ -1,5 +1,6 @@
 import os
 import pickle
+import psycopg2
 
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 
@@ -8,16 +9,17 @@ from flask import Flask, render_template, jsonify, request, redirect, url_for
 
 app = Flask(__name__)
 
-# conn = psycopg2.connect(database="fraud",
-#                         user="postgres",
-#                         host="localhost", port="5435")
-# cur = conn.cursor()
+conn = psycopg2.connect(database="whichwine",
+                        user="postgres",
+                        host="18.219.179.32", port="5432")
+cur = conn.cursor()
 
-# def get_db_data():
-#     select_query = "SELECT * FROM fraudstream"
-#     cur.execute(select_query)
-#     data = cur.fetchall()
-#     return data
+def get_db_data():
+    select_query = "SELECT wine_id, similar_wines FROM similarities limit 5;"
+    cur.execute(select_query)
+    data = cur.fetchall()
+    return data
+
 def get_data_placeholder():
     data = [[12345, 0.986],[12346, 0.034]]
     return data
@@ -31,8 +33,8 @@ def get_data_placeholder():
 # home page
 @app.route('/')
 def index():
-    #data = get_db_data()
-    data = get_data_placeholder()
+    data = get_db_data()
+    #data = get_data_placeholder()
     return render_template('index.html', data=data)
 
 # find similar wines
