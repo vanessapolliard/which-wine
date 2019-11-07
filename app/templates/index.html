@@ -66,13 +66,6 @@
         <p class="lead">Which wine will you choose? </p>
       </div>
 
-      <div class="jumbotron">
-        <p class="lead"><b>Wine ID -- Likeability</b></p>
-        {% for d in data %}
-        <p class="lead">{{d[0]}} -- {{"{:,.2f}%".format(d[1] * 100)}}</p>
-        {% endfor %}
-      </div>
-
 
       <div class="jumbotron">
         <table class="table table-dark">
