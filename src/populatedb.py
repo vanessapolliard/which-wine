@@ -10,8 +10,8 @@ def connect():
     cur = conn.cursor()
     return conn, cur
 
+
 def insert_into_db(conn, cur, insert_vals):
-    # similarities or similarwines
     try:
         insert_query = "INSERT INTO similarities VALUES \
                     (%s, %s)"
@@ -21,7 +21,7 @@ def insert_into_db(conn, cur, insert_vals):
         print(e)
         print(insert_query % tuple(insert_vals))
         
-
+# save distance matrix to postgres DB
 def save_similarities(conn, cur, dist_matrix):
     for idx, wine_dists in enumerate(dist_matrix):
         wine_id = idx
@@ -33,6 +33,8 @@ def save_similarities(conn, cur, dist_matrix):
 def close_connection(conn):
     conn.close()
 
+# use SQL alchemy to insert full df as table to postgres
+# used for wine metadata table and wine topic loadings table
 def alchemy_insert(df, table_name): 
     engine = create_engine('postgresql+psycopg2://postgres:@18.219.179.32/whichwine') 
     df.to_sql(table_name, engine, if_exists = 'append', index = False) # need to drop table if reloading

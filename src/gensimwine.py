@@ -32,6 +32,7 @@ def preprocess(text):
     return result
 
 
+# create iterate through sparse theta array and create full theta matrix
 def create_theta_matrix(theta_array, num_topics):
     new_df = pd.DataFrame(0, index=range(0, len(theta_array)),
                           columns=range(0, num_topics))
@@ -48,20 +49,12 @@ def all_words(phi):
         words.append(id2word[idx])
     return words
 
-
+# use cosine distance dataframe to find top 10 most similar wines
 def find_similar_wines(wine_title, dists, df):
     wine_idx = df[df['title'] == wine_title].index[0]
-    top_wines = np.argsort(dists[wine_idx, :])[:10] #taking first 10 because this is cosine distance, not similarity
+    top_wines = np.argsort(dists[wine_idx, :])[:10]
     top_wines = df.loc[top_wines][['title', 'variety', 'category', 'price']]
     return top_wines
-
-# def save_similarities(dist_matrix):
-#     sim_lookup = {}
-#     for idx, wine_dists in enumerate(dist_matrix):
-#         sim_lookup[idx] = np.argsort(wine_dists)[1:50]
-#         # write to postgres DB directly instead of save / import
-#         # maybe not write directly because will need to connect EC2 instances
-#     return sim_lookup
 
 
 if __name__ == '__main__':
