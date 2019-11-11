@@ -63,19 +63,170 @@
 
       <div class="starter-template">
         <h1>Similar Wines</h1>
-        <p class="lead">Search for a wine by name to find similar wines!</p>
+        <p class="lead">Search for a wine you love and find similar wines!</p>
       </div>
 
-      <div class='buttons'>
-          <form action='/similarwines', method='GET'>
-            <button type="submit" >Submit</button>
-          </form>
-        </div>
+      <form action='/similarwines', method='POST'>
+        <div><h4><b>Step 1. Choose a wine category:</b></h4></div>
+      <select name="category" id="select_category" class="selectpicker form-control">
+          <option selected="selected" value = ''>Select your preferred wine category...</option>
+          {% for category in df[1].unique()|sort %}
+          <option value="{{ category }}">{{ category }}</option>
+          {% endfor %}
+      </select>
+      
+      <br><br>
 
-      <!-- <div>
-        <img src="{{url_for('static', filename='ALS-v-MOM.png')}}" class="img-fluid" alt="Responsive image" width=20%>
-        <img src="{{url_for('static', filename='ALS-v-MOM.png')}}" class="img-fluid" alt="Responsive image" width=20%>
-      </div> -->
+      <div><h4><b>Step 2. Choose a wine varietal:</b></h4></div>
+      <select name="varietal" id="select_varietal" class="selectpicker form-control">
+          <option selected="selected" value = ''>Select your preferred wine varietal...</option>
+      </select>
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <script charset="utf-8" type="text/javascript">
+          $(function() {
+              var dropdown = {
+                  category: $('#select_category'),
+                  varietal: $('#select_varietal')
+              };
+              // function to call XHR and update goodsrec dropdown
+              function updateVarietal() {
+                  var category = dropdown.category.val();
+                  dropdown.varietal.attr('disabled', 'disabled');
+                  console.log(category);
+                  if (category.length) {
+                      dropdown.varietal.empty();
+                      $.getJSON("{{ url_for('get_varietals') }}", {category: category}, function(data) {
+                          console.log(data);
+                          data.forEach(function(item) {
+                              dropdown.varietal.append(
+                                  $('<option>', {
+                                      value: item.value, 
+                                      text: item.value
+                                  })
+                              );
+                          });
+                          dropdown.varietal.removeAttr('disabled');
+                      });
+                  }
+              }
+              // event listener to customer dropdown change
+              dropdown.category.on('change', function() {
+                  updateVarietal();
+              });
+          });
+      </script>
+
+      <br><br>
+      
+      <div><h4><b>Step 3. Choose a winery:</b></h4></div>
+      <select name="winery" id="select_winery" class="selectpicker form-control">
+          <option selected="selected" value = ''>Select a winery...</option>
+      </select>
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <script charset="utf-8" type="text/javascript">
+          $(function() {
+              var dropdown = {
+                  category: $('#select_category'),
+                  varietal: $('#select_varietal'),
+                  winery: $('#select_winery')
+              };
+              // function to call XHR and update goodsrec dropdown
+              function updateWinery() {
+                  var category = dropdown.category.val();
+                  var varietal = dropdown.varietal.val();
+                  dropdown.winery.attr('disabled', 'disabled');
+                  console.log(category);
+                  if (varietal.length) {
+                      dropdown.winery.empty();
+                      $.getJSON("{{ url_for('get_wineries') }}", {category: category, varietal: varietal}, function(data) {
+                          console.log(data);
+                          data.forEach(function(item) {
+                              dropdown.winery.append(
+                                  $('<option>', {
+                                      value: item.value, 
+                                      text: item.value
+                                  })
+                              );
+                          });
+                          dropdown.winery.removeAttr('disabled');
+                      });
+                  }
+              }
+              // event listener to customer dropdown change
+              dropdown.varietal.on('change', function() {
+                  updateWinery();
+              });
+          });
+      </script>
+
+      <br><br>
+
+      <div><h4><b>Step 4. Choose a wine:</b></h4></div>
+      <select name="wine" id="select_wine" class="selectpicker form-control">
+          <option selected="selected" value = ''>Select a wine...</option>
+      </select>
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <script charset="utf-8" type="text/javascript">
+          $(function() {
+              var dropdown = {
+                  category: $('#select_category'),
+                  varietal: $('#select_varietal'),
+                  winery: $('#select_winery'),
+                  wine: $('#select_wine')
+              };
+              // function to call XHR and update goodsrec dropdown
+              function updateWine() {
+                  var category = dropdown.category.val();
+                  var varietal = dropdown.varietal.val();
+                  var winery = dropdown.winery.val();
+                  dropdown.wine.attr('disabled', 'disabled');
+                  if (winery.length) {
+                      dropdown.wine.empty();
+                      $.getJSON("{{ url_for('get_wines') }}", {category: category, varietal: varietal, winery: winery}, function(data) {
+                          console.log(data);
+                          data.forEach(function(item) {
+                              dropdown.wine.append(
+                                  $('<option>', {
+                                      value: item.value, 
+                                      text: item.value
+                                  })
+                              );
+                          });
+                          dropdown.wine.removeAttr('disabled');
+                      });
+                  }
+              }
+              // event listener to customer dropdown change
+              dropdown.winery.on('change', function() {
+                  updateWine();
+              });
+          });
+      </script>
+
+      <br><br>
+
+      <div><h4><b>Step 5. Choose how many recommendations you would like:</b></h4></div>
+      <select name="num_recs" id="select_num_recs" class="selectpicker form-control">
+          <option selected="" value=5>How many recommendations would you like?</option>
+          {% for i in [5,10,15,20] %}
+          <option value="{{ i }}">{{ i }}</option>
+          {% endfor %}
+      </select>
+      <br>
+      <div class='buttons'>
+        <form action='/similarresults'>
+          <button type="submit" >Submit</button>
+        </form>
+      </div>
+
+      
+      </form>
 
     </div><!-- /.container -->
 
