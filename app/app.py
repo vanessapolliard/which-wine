@@ -40,7 +40,7 @@ def get_results(wine, num_recs):
 @app.route('/')
 def index():
     data = get_db_data()
-    return render_template('index.html', data=data)
+    return render_template('index.html')
 
 # find similar wines
 @app.route('/findsimilarwines')
