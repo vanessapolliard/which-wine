@@ -99,4 +99,4 @@ Fresh & Fruity            |  Warm Spice
 
 &nbsp;
 ## App
-The recommendation algorithm was deployed to AWS in a Flask app and uses a PostgreSQL database for backend data storage. Test out the app here - [Which Wine? App](bit.ly/whichwinerec) 
+The recommendation algorithm was deployed to AWS in a Flask app and uses a PostgreSQL database for backend data storage. Test out the app here - [Which Wine? App](http://bit.ly/whichwinerec) 
