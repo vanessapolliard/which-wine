@@ -84,25 +84,19 @@ I trained the model on an EC2 instance using gensim multicore LDA to speed up tr
 ### Topic 0 & Topic 6 Top Words
 Fresh & Fruity            |  Warm Spice
 :-------------------------:|:-------------------------:
-![](https://github.com/vanessapolliard/which-wine/blob/master/images/topic0words.png)  |  ![](https://github.com/vanessapolliard/which-wine/blob/master/images/topic6words.png)
+![](https://github.com/vanessapolliard/which-wine/blob/master/images/topic0words2.png)  |  ![](https://github.com/vanessapolliard/which-wine/blob/master/images/topic6words2.png)
 
 
 &nbsp;
-### Model Scores
-**log perplexity** = -7.10
+### Sample Recommendations
 
-**coherence** =  0.35
+|  Input | Recommendations Output |
+|---|---|
+| Constantin Gofas 2012 Agiorgitiko (Nemea) - $15 | Finca Decero 2012 Remolinos Vineyard Cabernet Sauvignon (Agrelo) - $22; Enate 2013 Cabernet Sauvignon-Merlot (Somontano) - $13; Château Tour Saint Vincent 2013 Médoc - $22 |
+| Infinite Monkey Theorem 2013 Malbec  - $25 | Wirra Wirra 2012 Shiraz  - $20; Waterbrook 2013 Red Blend - $14; Donati 2012 Petit Verdot - $30|
 
-&nbsp;
-### Recommendations
-The following recommendations were generated using a subset of 10,000 reviews from the dataset.
-
-|  Variety |  Title | Recommended Varieties  |
-|---|---|---|
-|  Tempranillo-Merlot | Tandem 2011 Ars In Vitro Tempranillo-Merlot (Navarra)'  | Aglianico, Mourvèdre, Chardonnay, Pinot Noir, Port, Champagne Blend, Grenache, Portuguese White, Cabernet Sauvignon |
-|  Pinot Noir | Sweet Cheeks 2012 Vintner's Reserve Wild Child Block Pinot Noir (Willamette Valley)  | Bordeaux-style Red Blend, Bordeaux-style Red Blend, Malbec, Bordeaux-style Red Blend, Barbera, Bordeaux-style Red Blend, Bordeaux-style Red Blend, Riesling, Cabernet Sauvignon  |
 
 
 &nbsp;
-## Next Steps
-Unfortunately because of the size of the dataset I needed to run the model on EC2 using gensim, but gensim does not easily output the typical LDA phi and theta matrices as Sklearn does. When attempting to calculate cosine distances of an NMF model I ran into memory issues on EC2. I plan to continue using a subset of the data or a memory-optimized EC2 to move forward with generating recommendations from wine to wine (including price and variety as features) and recommendations based on user preferences. 
+## App
+The recommendation algorithm was deployed to AWS in a Flask app and uses a PostgreSQL database for backend data storage. Test out the app here - bit.ly/whichwinerec
