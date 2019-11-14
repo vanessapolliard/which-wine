@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 def connect():
     conn = psycopg2.connect(database="whichwine",
                         user="postgres",
-                        host="18.219.179.32", port="5432")
+                        host="18.217.219.106", port="5432")
     cur = conn.cursor()
     return conn, cur
 

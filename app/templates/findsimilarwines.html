@@ -82,8 +82,8 @@
       <form action='/similarwines', method='POST'>
         <div><h4><b>Step 1. Choose a wine category:</b></h4></div>
       <select name="category" id="select_category" class="selectpicker form-control">
-          <option selected="selected" value = ''>Select your preferred wine category...</option>
-          {% for category in df[1].unique()|sort %}
+          <option selected="selected" value = ''>Select a wine category...</option>
+          {% for category in df['category'].unique()|sort %}
           <option value="{{ category }}">{{ category }}</option>
           {% endfor %}
       </select>
@@ -92,7 +92,7 @@
 
       <div><h4><b>Step 2. Choose a wine varietal:</b></h4></div>
       <select name="varietal" id="select_varietal" class="selectpicker form-control">
-          <option selected="selected" value = ''>Select your preferred wine varietal...</option>
+          <option selected="selected" value = ''>Select a wine varietal...</option>
       </select>
 
 
