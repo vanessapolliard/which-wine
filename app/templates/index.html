@@ -23,7 +23,7 @@
       font-size:3em;
     }
     .main p {
-      font-size:2em;
+      font-size:4em;
     }
     .buttons {
       display: flex;
@@ -46,6 +46,11 @@
                 color: rgba(156, 14, 14, 0.966);
                 border-color: rgba(156, 14, 14, 0.966);
             }
+    .divider{
+        width:5px;
+        height:auto;
+        display:inline-block;
+    }
     </style>
 
 <html lang="en">
@@ -96,7 +101,7 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <!-- <li class="active"><a href="/">Home</a></li> -->
-                <li><a href="/findsimilarwines">Choose Similar Wine</a></li>
+                <li><a href="/findsimilarwines">Find Similar Wines</a></li>
                 <!-- <li><a href="#contact">Contact</a></li> -->
               </ul>
           <ul class="nav navbar-nav">
@@ -113,24 +118,27 @@
       </div>
     </nav>
 
+    &nbsp;
+
     <div class="container">
-
+        &nbsp;
+        &nbsp;
       <div class="starter-template">
-        <h1>Experts Help You Choose a Wine!</h1>
-        <p class="lead">Which wine will you choose? </p>
+        <h1><b>Experts Help You Choose a Wine!</b></h1>
+        <p class="lead">Which wine will you choose?</p>
       </div>
-
       <div class='buttons'>
           <form action='/findsimilarwines', method='GET'>
             <button type="submit" >Find Similar Wines</button>
+            <div class="divider"></div>
           </form>
 
-      <!-- <div>
-        <img src="{{url_for('static', filename='ALS-v-MOM.png')}}" class="img-fluid" alt="Responsive image" width=20%>
-        <img src="{{url_for('static', filename='ALS-v-MOM.png')}}" class="img-fluid" alt="Responsive image" width=20%>
-      </div> -->
+          <form action='/winequiz', method='GET'>
+            <div class="divider"></div>
+            <button type="submit" >Take The Wine Quiz</button>
+          </form>
 
-    </div><!-- /.container -->
+    </div>
 
 
     <!-- Bootstrap core JavaScript

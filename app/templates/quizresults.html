@@ -1,4 +1,18 @@
 <!DOCTYPE html>
+
+<style>
+    body{
+      background-image:url('../static/img/sven-wilhelm-2cRXSWyMHA8-unsplash.jpg');
+      width:100%;
+     background-size: cover;
+    }
+    @media only screen and (max-width: 600px) {
+        body {
+            background-size: auto;
+        }
+    }
+  </style>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -45,34 +59,55 @@
           <a class="navbar-brand" href="/">Which Wine?</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <!-- <li class="active"><a href="/">Home</a></li> -->
+                <li><a href="/findsimilarwines">Find Similar Wines</a></li>
+                <!-- <li><a href="#contact">Contact</a></li> -->
+              </ul>
           <ul class="nav navbar-nav">
             <!-- <li class="active"><a href="/">Home</a></li> -->
             <li><a href="/winequiz">Wine Quiz</a></li>
             <!-- <li><a href="#contact">Contact</a></li> -->
           </ul>
           <ul class="nav navbar-nav">
-            <!-- <li class="active"><a href="/">Home</a></li> -->
-            <li><a href="/findsimilarwines">Choose Similar Wine</a></li>
-            <!-- <li><a href="#contact">Contact</a></li> -->
-          </ul>
+              <!-- <li class="active"><a href="/">Home</a></li> -->
+              <li><a href="https://github.com/vanessapolliard/which-wine/blob/master/README.md">About</a></li>
+              <!-- <li><a href="#contact">Contact</a></li> -->
+            </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
 
-      <div class="starter-template">
-        <h1>Find quiz results here!</h1>
-        <p class="lead">Which wine will you choose? </p>
-      </div>
-
-
-      <!-- <div>
-        <img src="{{url_for('static', filename='ALS-v-MOM.png')}}" class="img-fluid" alt="Responsive image" width=20%>
-        <img src="{{url_for('static', filename='ALS-v-MOM.png')}}" class="img-fluid" alt="Responsive image" width=20%>
-      </div> -->
-
-    </div><!-- /.container -->
+        <div class="starter-template">
+          <h1>Quiz Results</h1>
+          <p class="lead">Which wine will you choose? </p>
+        </div>
+  
+        <div class="jumbotron">
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Wine</th>
+                <th scope="col">Variety</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for d in data %}
+              <tr>
+                <!-- <th scope="row">{{d[0]}}</th> -->
+                <td class="c1">{{d[0]}}</td>
+                <td class="c2">{{d[1]}}</td>
+                <td class="c3">{{d[2]}}</td>
+              </tr>
+              {% endfor %}
+              <tr>
+            </tbody>
+          </table></div>
+  
+      </div><!-- /.container -->
 
 
     <!-- Bootstrap core JavaScript

@@ -1,4 +1,38 @@
 <!DOCTYPE html>
+<style>
+    body{
+      background-image:url('../static/img/alice-pasqual-5Qafzt-wIgk-unsplash.jpg');
+      width:100%;
+     background-size: cover;
+    }
+    @media only screen and (max-width: 600px) {
+        body {
+            background-size: auto;
+        }
+    }
+    .buttons {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+    }
+    button {
+                padding: 1vh 2vw;
+                background-color: rgba(172, 64, 44, 0.966);
+                color: rgb(2, 2, 2);
+                border-radius: 16px;
+                border-color: rgba(172, 64, 44, 0.966); 
+                padding-left: 12px; 
+                padding-right: 12px; 
+                font-size: 16px; 
+                font-weight: bold;
+            }
+            button:hover {
+                background-color: rgba(0,0,0,0);
+                color: rgba(156, 14, 14, 0.966);
+                border-color: rgba(156, 14, 14, 0.966);
+            }
+  </style>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -45,16 +79,21 @@
           <a class="navbar-brand" href="/">Which Wine?</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <!-- <li class="active"><a href="/">Home</a></li> -->
+                <li><a href="/findsimilarwines">Find Similar Wines</a></li>
+                <!-- <li><a href="#contact">Contact</a></li> -->
+              </ul>
           <ul class="nav navbar-nav">
             <!-- <li class="active"><a href="/">Home</a></li> -->
             <li><a href="/winequiz">Wine Quiz</a></li>
             <!-- <li><a href="#contact">Contact</a></li> -->
           </ul>
           <ul class="nav navbar-nav">
-            <!-- <li class="active"><a href="/">Home</a></li> -->
-            <li><a href="/findsimilarwines">Choose Similar Wine</a></li>
-            <!-- <li><a href="#contact">Contact</a></li> -->
-          </ul>
+              <!-- <li class="active"><a href="/">Home</a></li> -->
+              <li><a href="https://github.com/vanessapolliard/which-wine/blob/master/README.md">About</a></li>
+              <!-- <li><a href="#contact">Contact</a></li> -->
+            </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -66,16 +105,45 @@
         <p class="lead">Which wine will you choose? </p>
       </div>
 
+      <form action='/quizresults', method='POST'>
+        <div><h4><b>Choose a wine category:</b></h4></div>
+      <select name="category" id="select_category" class="selectpicker form-control">
+          <option selected="selected" value = ''>Select a wine category...</option>
+          {% for category in df['category'].unique()|sort %}
+          <option value="{{ category }}">{{ category }}</option>
+          {% endfor %}
+      </select>
+
+      <br><br>
+
+      <form action='/quizresults', method='POST'>
+        <div><h4><b>Choose a price range:</b></h4></div>
+      <select name="price" id="select_price" class="selectpicker form-control">
+          <option selected="selected" value = ''>Select a price range...</option>
+          {% for price in prices %}
+          <option value="{{ price }}">{{ price }}</option>
+          {% endfor %}
+      </select>
+
+      <br><br>
+      <!-- {0:'apple',1:'blackberry',2:'peach',3:'cherry',4:'pepper',5:'wood',6:'vanilla'} -->
+      <form action='/quizresults', method='POST'>
+        <div><h4><b>Select notes you like in a wine (up to 3):</b></h4></div>
+        <input type="checkbox" name="apple" value="apple"> <b>apple</b><br>
+        <input type="checkbox" name="blackberry" value="blackberry"> <b>blackberry</b><br>
+        <input type="checkbox" name="peach" value="peach"> <b>peach</b><br>
+        <input type="checkbox" name="cherry" value="cherry"> <b>cherry</b><br>
+        <input type="checkbox" name="pepper" value="pepper"> <b>pepper</b><br>
+        <input type="checkbox" name="wood" value="wood"> <b>wood</b><br>
+        <input type="checkbox" name="vanilla" value="vanilla"> <b>vanilla</b><br>
+
+      <br><br>
       <div class='buttons'>
           <form action='/quizresults', method='GET'>
             <button type="submit" >Submit</button>
           </form>
         </div>
 
-      <!-- <div>
-        <img src="{{url_for('static', filename='ALS-v-MOM.png')}}" class="img-fluid" alt="Responsive image" width=20%>
-        <img src="{{url_for('static', filename='ALS-v-MOM.png')}}" class="img-fluid" alt="Responsive image" width=20%>
-      </div> -->
 
     </div><!-- /.container -->
 
